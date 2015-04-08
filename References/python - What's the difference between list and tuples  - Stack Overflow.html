@@ -1,0 +1,2844 @@
+<!DOCTYPE html>
+<!-- saved from url=(0086)http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples -->
+<html itemscope="" itemtype="http://schema.org/QAPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>python - What's the difference between list and tuples? - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/stackoverflow/img/favicon.ico?v=038622610830">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=41f6e13ade69">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=ea71a5211a91">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="What&#39;s the difference between list and tuples?">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="What&#39;s the difference?
+
+What are the advantages / disadvantages of tuples / lists?
+">
+    <meta property="og:url" content="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples">
+    <link rel="canonical" href="./python - What's the difference between list and tuples  - Stack Overflow_files/python - What's the difference between list and tuples  - Stack Overflow.html">
+
+    
+    
+    <script async="" src="./python - What's the difference between list and tuples  - Stack Overflow_files/quant.js"></script><script async="" src="./python - What's the difference between list and tuples  - Stack Overflow_files/beacon.js"></script><script async="" src="./python - What's the difference between list and tuples  - Stack Overflow_files/analytics.js"></script><script type="text/javascript" async="" src="http://static.adzerk.net/ados.js"></script><script src="./python - What's the difference between list and tuples  - Stack Overflow_files/jquery.min.js"></script><style type="text/css"></style>
+    <script src="./python - What's the difference between list and tuples  - Stack Overflow_files/stub.en.js"></script>
+    <link rel="stylesheet" type="text/css" href="./python - What's the difference between list and tuples  - Stack Overflow_files/all.css">
+    
+    <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;What&#39;s the difference between list and tuples?&#39;" href="http://stackoverflow.com/feeds/question/626759">
+    <meta name="twitter:app:country" content="US">
+    <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+    <meta name="twitter:app:id:iphone" content="871299723">
+    <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples">
+    <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+    <meta name="twitter:app:id:ipad" content="871299723">
+    <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples">
+    <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+    <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples">
+    <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+    <script>
+        
+        StackExchange.ready(function () {
+                
+                StackExchange.using("snippets", function () {
+                    StackExchange.snippets.initSnippetRenderer();
+                });
+                
+
+            StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+            
+            StackExchange.question.init({showAnswerHelp:true,totalCommentCount:18,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:626759});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '626759');
+            
+                    });
+    </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1422015230,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"25d7230266692fc2a7742a31d99a100e","isAnonymous":true,"ab":{"search_improvements":{"v":"experiment_19","g":2}}}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"ccd860b0f21a","js/moderator.en.js":"7ae78f8d46ec","js/full-anon.en.js":"d00fa6e24f42","js/full.en.js":"623e749f3bdd","js/wmd.en.js":"d61a47f4ab8f","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"0c842be285f8","js/help.en.js":"637a173e1aa4","js/tageditor.en.js":"26cf28047f75","js/tageditornew.en.js":"953d2cecbdbd","js/inline-tag-editing.en.js":"1498d8619942","js/revisions.en.js":"8e050c5bb5cd","js/review.en.js":"496398534831","js/tagsuggestions.en.js":"bb4721d888d2","js/post-validation.en.js":"4fabf593d293","js/explore-qlist.en.js":"257ba4cb7b04","js/events.en.js":"15a97b16194e","js/keyboard-shortcuts.en.js":"c3f174edad01","js/external-editor.en.js":"a9a74e04c9b0","js/external-editor.en.js":"a9a74e04c9b0","js/snippet-javascript.en.js":"7700e8b17c10","js/snippet-javascript-codemirror.en.js":"cf208526f2e2"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    
+    
+<script async="" src="./python - What's the difference between list and tuples  - Stack Overflow_files/full-anon.en.js"></script><script async="" src="./python - What's the difference between list and tuples  - Stack Overflow_files/snippet-javascript.en.js"></script><script async="" src="./python - What's the difference between list and tuples  - Stack Overflow_files/post-validation.en.js"></script><script async="" src="./python - What's the difference between list and tuples  - Stack Overflow_files/prettify-full.en.js"></script><script async="" src="./python - What's the difference between list and tuples  - Stack Overflow_files/external-editor.en.js"></script></head>
+<body class="question-page new-topbar">
+    <noscript>&lt;div id="noscript-padding"&gt;&lt;/div&gt;</noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://stackoverflow.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+                    <a href="http://blog.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:7 })">blog</a>
+            </div>
+
+
+
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track" href="http://careers.stackoverflow.com/?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=multicollider" data-gps-track="site_switcher.click({ item_type:9 })">
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+your communities        </h3>
+            
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f626759%2fwhats-the-difference-between-list-and-tuples" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f626759%2fwhats-the-difference-between-list-and-tuples" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+            </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 134 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+        </div>
+
+        <div class="topbar-links">
+
+                <div class="links-container">
+                    <span class="topbar-menu-links">
+                            <a href="https://stackoverflow.com/users/signup?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f626759%2fwhats-the-difference-between-list-and-tuples" class="login-link">sign up</a>
+                            <a href="https://stackoverflow.com/users/login?returnurl=http%3a%2f%2fstackoverflow.com%2fquestions%2f626759%2fwhats-the-difference-between-list-and-tuples" class="login-link">log in</a>
+                            <a href="http://stackoverflow.com/tour">tour</a>
+
+                            <a href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="http://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                            <a href="http://careers.stackoverflow.com/?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=anon-topbar">stack overflow careers</a>
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="http://stackoverflow.com/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://stackoverflow.com/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="http://stackoverflow.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://stackoverflow.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://stackoverflow.com/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="http://stackoverflow.com/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+	<link itemprop="image" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+			<!--googleoff: all-->
+
+<div id="herobox-mini">
+    <div id="hero-content">
+        <span id="controls">
+            <a href="http://stackoverflow.com/tour" id="tell-me-more" class="button">Take the 2-minute tour</a>
+            <span id="close"><a title="click to dismiss">×</a></span>
+        </span>
+        <div id="blurb">
+            Stack Overflow is a question and answer site for professional and enthusiast programmers. It's 100% free, no registration required.
+        </div>        
+    </div>
+    <script>
+        $('#tell-me-more').click(function () {
+            var clickSource = $("body").attr("class") + '-mini';
+            if ($("body").hasClass("questions-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("question-page")) {
+                clickSource = 'questionpagemini';
+            } else if ($("body").hasClass("home-page")) {
+                clickSource = 'homepagemini';
+            }
+
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("aboutpage.click", { aboutclick_location: clickSource } , true);
+            });
+        });
+        $('#herobox-mini #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "close" }, true);
+            });
+            $.cookie("hero", "none", { path: "/", expires: 365 });
+            var $hero = $("#herobox-mini");
+            $hero.slideUp('fast', function () { $hero.remove(); });
+            return false;
+        });
+    </script>
+</div>
+			<!--googleon: all-->
+			<div id="question-header">
+			<h1 itemprop="name"><a href="./python - What's the difference between list and tuples  - Stack Overflow_files/python - What's the difference between list and tuples  - Stack Overflow.html" class="question-hyperlink">What's the difference between list and tuples?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="626759" id="question">
+
+    <script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk1124258619",4).setZone(43) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1124258619">
+            </div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="626759">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">311</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+    
+    <a class="star-off" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b>153</b></div>   
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+        <p>What's the difference?</p>
+
+<p>What are the advantages / disadvantages of tuples / lists?</p>
+
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/python" class="post-tag js-gps-track" title="show questions tagged &#39;python&#39;" rel="tag">python</a> <a href="http://stackoverflow.com/questions/tagged/list" class="post-tag js-gps-track" title="show questions tagged &#39;list&#39;" rel="tag">list</a> <a href="http://stackoverflow.com/questions/tagged/tuples" class="post-tag js-gps-track" title="show questions tagged &#39;tuples&#39;" rel="tag">tuples</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/626759" title="short permalink to this question" class="short-link" id="link-post-626759">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/626759/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/626759/revisions" title="show all edits to this post">edited <span title="2014-06-25 13:52:15Z" class="relativetime">Jun 25 '14 at 13:52</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1251007/user1251007"><div class="gravatar-wrapper-32"><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/5caaf7e0d764745b31979d09c46a3c81" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1251007/user1251007">user1251007</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,156</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="14 silver badges"><span class="badge2"></span><span class="badgecount">14</span></span><span title="38 bronze badges"><span class="badge3"></span><span class="badgecount">38</span></span>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info user-hover">
+    <div class="user-action-time">
+        asked <span title="2009-03-09 15:41:25Z" class="relativetime">Mar 9 '09 at 15:41</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/20601/lucas-gabriel-s%c3%a1nchez"><div class="gravatar-wrapper-32"><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/6e06a3fc8dee08637ab5c7e17d05f17b" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/20601/lucas-gabriel-s%c3%a1nchez">Lucas Gabriel Sánchez</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">5,048</span><span title="12 gold badges"><span class="badge1"></span><span class="badgecount">12</span></span><span title="38 silver badges"><span class="badge2"></span><span class="badgecount">38</span></span><span title="68 bronze badges"><span class="badge3"></span><span class="badgecount">68</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-626759" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="13" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-439581" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="warm">6</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">The others answered below, but I'd like to point out, that, imho, python has a totally unintuitive data type names. I don't think any other language has tuples (by that name), and whats worse as a word I can't even translate it in my language. Does anyone know where "tuple" comes from ? Dutch ?</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/62699/ldigas" title="21685 reputation" class="comment-user">ldigas</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment439581_626759"><span title="2009-03-09 16:36:35Z" class="relativetime-clean">Mar 9 '09 at 16:36</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-439591" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="warm">8</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Haskell has got tuples too.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/24587/georg-sch%c3%b6lly" title="67476 reputation" class="comment-user">Georg Schölly</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment439591_626759"><span title="2009-03-09 16:38:56Z" class="relativetime-clean">Mar 9 '09 at 16:38</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-439606" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="supernova">39</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Tuples are a basic term in mathematics, derived from latin (see wikipedia).</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/11992/nikow" title="9642 reputation" class="comment-user">nikow</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment439606_626759"><span title="2009-03-09 16:42:39Z" class="relativetime-clean">Mar 9 '09 at 16:42</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-440892" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="supernova">33</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">pair -&gt; triple -&gt; quadruple -&gt; quintuple -&gt; sextuple -&gt; um, what's it called, ah sod it, 7-tuple -&gt; 8-tuple -&gt; ... hence 'tuple' as a generic name.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/15154/john-fouhy" title="16122 reputation" class="comment-user">John Fouhy</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment440892_626759"><span title="2009-03-09 22:21:35Z" class="relativetime-clean">Mar 9 '09 at 22:21</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-3442776" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">tuples are also used in the D programming language, i wish i could use it like this in c++ :P</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/388614/quonux" title="2202 reputation" class="comment-user">Quonux</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment3442776_626759"><span title="2010-07-23 17:52:44Z" class="relativetime-clean">Jul 23 '10 at 17:52</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-626759" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link " title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" onclick="">show <b>13</b> more comments</a>
+            </div>
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								10 Answers
+                                <span style="display:none;" itemprop="answerCount">10</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="626871"></a>
+<div id="answer-626871" class="answer accepted-answer" data-answerid="626871" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="626871">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">395</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Apart from tuples being immutable there is also a semantic distinction that should guide their usage. Tuples are heterogeneous data structures (i.e., their entries have different meanings), while lists are homogeneous sequences. <strong>Tuples have structure, lists have order.</strong> </p>
+
+<p>Using this distinction makes code more explicit and understandable.</p>
+
+<p>One example would be pairs of page and line number to reference locations in a book, e.g.:</p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="pln">my_location </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="lit">42</span><span class="pun">,</span><span class="pln"> </span><span class="lit">11</span><span class="pun">)</span><span class="pln">  </span><span class="com"># page number, line number</span></code></pre>
+
+<p>You can then use this as a key in a dictionary to store notes on locations. A list on the other hand could be used to store multiple locations. Naturally one might want to add or remove locations from the list, so it makes sense that lists are mutable. On the other hand it probably doesn't make sense to change the page number in a location tuple while keeping the line number intact - this would give you a completely new location. On the other hand, there might be situations where it makes perfect sense to correct just the line number (without replacing the whole tuple).</p>
+
+<p>There are some interesting articles on this issue, e.g. <a href="http://jtauber.com/blog/2006/04/15/python_tuples_are_not_just_constant_lists/">"Python Tuples are Not Just Constant Lists"</a> or <a href="http://news.e-scribe.com/397">"Understanding tuples vs. lists in Python"</a>. The official Python documentation <a href="http://docs.python.org/2/tutorial/datastructures.html#tuples-and-sequences">also mentions this</a> (<em>"Tuples are immutable, and usually contain an heterogeneous sequence ..."</em>).</p>
+
+<p>In a statically typed language like <em>Haskell</em> the values in a tuple generally have different types and the length of the tuple must be fixed. In a list the values all have the same type and the length is not fixed. So the difference is very obvious.</p>
+
+<p>Finally there is the <a href="http://docs.python.org/dev/library/collections.html#collections.namedtuple">namedtuple</a> in Python, which makes sense because a tuple is already supposed to have structure. This underlines the idea that tuples are a light-weight alternative to classes and instances.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/626871" title="short permalink to this answer" class="short-link" id="link-post-626871">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/626871/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/626871/revisions" title="show all edits to this post">edited <span title="2013-12-11 21:24:40Z" class="relativetime">Dec 11 '13 at 21:24</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2009-03-09 16:02:51Z" class="relativetime">Mar 9 '09 at 16:02</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/11992/nikow"><div class="gravatar-wrapper-32"><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/09b743ba088c0bf7e07ee429a32acedc" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/11992/nikow">nikow</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">9,642</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="26 silver badges"><span class="badge2"></span><span class="badgecount">26</span></span><span title="54 bronze badges"><span class="badge3"></span><span class="badgecount">54</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-626871" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="20" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-439756" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@duffymo: It took me a while to stumble across this as well :) Many people are probably not aware of this, and some might even disagree. I found this convention to be quite helpful in practice.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/11992/nikow" title="9642 reputation" class="comment-user">nikow</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment439756_626871"><span title="2009-03-09 17:16:50Z" class="relativetime-clean">Mar 9 '09 at 17:16</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-440557" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Mentioning <code>collections.namedtuple</code> might be helpful.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/4279/j-f-sebastian" title="116516 reputation" class="comment-user">J.F. Sebastian</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment440557_626871"><span title="2009-03-09 20:39:27Z" class="relativetime-clean">Mar 9 '09 at 20:39</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-16446382" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="warm">13</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">"lists are homogeneous sequences" - I'm new to Python, but aren't lists heterogeneous? From <a href="http://docs.python.org/py3k/tutorial/introduction.html" rel="nofollow">docs.python.org/py3k/tutorial/introduction.html</a> : "List items need not all have the same type." But maybe you're speaking about the formal concept, and not the Python take on it.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/1082367/matthew-cornell" title="940 reputation" class="comment-user">Matthew Cornell</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment16446382_626871"><span title="2012-09-04 14:41:33Z" class="relativetime-clean">Sep 4 '12 at 14:41</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-20510335" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="warm">6</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Matthew Even though the language does allow you to mix types in a list this is usually not a good idea. What would you do with such a list? Iterating over it doesn't make much sense, unless the list items share a common interface that you can use.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/11992/nikow" title="9642 reputation" class="comment-user">nikow</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment20510335_626871"><span title="2013-02-03 13:20:22Z" class="relativetime-clean">Feb 3 '13 at 13:20</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-29165520" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">A good semantic synonym for "tuple" might be "record." It's a collection of related data items in a specific sequence. In fact I feel like <code>collections.namedtuple</code> would be better called <code>collections.record</code>. It would make no sense to swap, say, the name and address in a customer record; in fact, doing so would generally be an error, which the tuple's immutability prevents you from committing.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/416467/kindall" title="65910 reputation" class="comment-user">kindall</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment29165520_626871"><span title="2013-10-28 18:58:23Z" class="relativetime-clean">Oct 28 '13 at 18:58</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-626871" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link " title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" onclick="">show <b>20</b> more comments</a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk809045193",4).setZone(44) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk809045193">
+            </div>
+  
+<a name="627165"></a>
+<div id="answer-627165" class="answer" data-answerid="627165" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="627165">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">93</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>If you went for a walk, you could note your coordinates at any instant in an (x,y) tuple.</p>
+
+<p>If you wanted to record your journey, you could append your location every few seconds to a list.</p>
+
+<p>But you couldn't do it the other way around.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/627165" title="short permalink to this answer" class="short-link" id="link-post-627165">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/627165/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/627165/revisions" title="show all edits to this post">edited <span title="2013-02-07 00:17:53Z" class="relativetime">Feb 7 '13 at 0:17</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2009-03-09 17:14:47Z" class="relativetime">Mar 9 '09 at 17:14</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/60620/dan-gph"><div class="gravatar-wrapper-32"><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/a4c50597f47ad4cb6e6d945500e7eea9" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/60620/dan-gph">dan-gph</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">6,000</span><span title="4 gold badges"><span class="badge1"></span><span class="badgecount">4</span></span><span title="24 silver badges"><span class="badge2"></span><span class="badgecount">24</span></span><span title="53 bronze badges"><span class="badge3"></span><span class="badgecount">53</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-627165" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-22305811" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="warm">9</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This example looks like merely a convention. People could argue "I can still use [x, y] to note coordinates if I want". Therefore, this answer is considered uncompleted unless one more sentence: "Read @nikow 's post for why you should not use list to store coordinates"</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/728675/iceberg" title="1079 reputation" class="comment-user">Iceberg</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment22305811_627165"><span title="2013-03-29 15:47:05Z" class="relativetime-clean">Mar 29 '13 at 15:47</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-22805019" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="hot">20</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Iceberg, my answer is meant to help develop intuition. It's not meant to explore every nuance of the topic.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/60620/dan-gph" title="6000 reputation" class="comment-user">dan-gph</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment22805019_627165"><span title="2013-04-14 00:00:17Z" class="relativetime-clean">Apr 14 '13 at 0:00</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-43937248" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Nice example +1. It emphasizes the complementary nature of the tuple elements (here the coordinates), which is the reason why modifying any one of them is not allowed -- because it changes the meaning of the whole tuple (here the position of one point).</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/1405762/hao-wang" title="60 reputation" class="comment-user">Hao Wang</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment43937248_627165"><span title="2015-01-04 06:54:32Z" class="relativetime-clean">Jan 4 at 6:54</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-627165" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="18892969"></a>
+<div id="answer-18892969" class="answer" data-answerid="18892969" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="18892969">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">66</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Difference between list and tuple</p>
+
+<ol>
+<li><p><strong>Size</strong></p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="pln">a </span><span class="pun">=</span><span class="pln"> tuple</span><span class="pun">(</span><span class="pln">range</span><span class="pun">(</span><span class="lit">1000</span><span class="pun">))</span><span class="pln">
+b </span><span class="pun">=</span><span class="pln"> list</span><span class="pun">(</span><span class="pln"> range</span><span class="pun">(</span><span class="lit">1000</span><span class="pun">))</span><span class="pln">
+
+a</span><span class="pun">.</span><span class="pln">__sizeof__</span><span class="pun">()</span><span class="pln"> </span><span class="com"># 8024</span><span class="pln">
+b</span><span class="pun">.</span><span class="pln">__sizeof__</span><span class="pun">()</span><span class="pln"> </span><span class="com"># 9088</span></code></pre>
+
+<p>Due to the smaller size of a tuple operation with it a bit faster but not that much to mention about until you have a huge amount of elements.</p></li>
+<li><p><strong>Permitted operations</strong></p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="pln">b    </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">]</span><span class="pln">   
+b</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="lit">3</span><span class="pln">       </span><span class="com"># [3, 2]</span><span class="pln">
+
+a    </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">)</span><span class="pln">
+a</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="lit">3</span><span class="pln">       </span><span class="com"># Error</span></code></pre>
+
+<p>that also mean that you can't delete element or sort tuple. 
+At the same time you could add new element to both list and tuple with the only difference that you will change id of the tuple by adding element</p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="pln">a     </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">)</span><span class="pln">
+b     </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">]</span><span class="pln">  
+
+id</span><span class="pun">(</span><span class="pln">a</span><span class="pun">)</span><span class="pln">          </span><span class="com"># 140230916716520</span><span class="pln">
+id</span><span class="pun">(</span><span class="pln">b</span><span class="pun">)</span><span class="pln">          </span><span class="com"># 748527696</span><span class="pln">
+
+a   </span><span class="pun">+=</span><span class="pln"> </span><span class="pun">(</span><span class="lit">3</span><span class="pun">,)</span><span class="pln">    </span><span class="com"># (1, 2, 3)</span><span class="pln">
+b   </span><span class="pun">+=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">3</span><span class="pun">]</span><span class="pln">     </span><span class="com"># [1, 2, 3]</span><span class="pln">
+
+id</span><span class="pun">(</span><span class="pln">a</span><span class="pun">)</span><span class="pln">          </span><span class="com"># 140230916878160</span><span class="pln">
+id</span><span class="pun">(</span><span class="pln">b</span><span class="pun">)</span><span class="pln">          </span><span class="com"># 748527696</span></code></pre></li>
+<li><p><strong>Usage</strong></p>
+
+<p>You can't use list as a dictionary identifier </p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="pln">a    </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">)</span><span class="pln">
+b    </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">]</span><span class="pln"> 
+
+c </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">a</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pun">}</span><span class="pln">     </span><span class="com"># OK</span><span class="pln">
+c </span><span class="pun">=</span><span class="pln"> </span><span class="pun">{</span><span class="pln">b</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1</span><span class="pun">}</span><span class="pln">     </span><span class="com"># Error</span></code></pre></li>
+</ol>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/18892969" title="short permalink to this answer" class="short-link" id="link-post-18892969">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/18892969/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/18892969/revisions" title="show all edits to this post">edited <span title="2013-09-19 13:12:39Z" class="relativetime">Sep 19 '13 at 13:12</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/102441/eric"><div class="gravatar-wrapper-32"><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/cf1b41a0f134b54597bf8a618be7880f" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/102441/eric">Eric</a><br>
+        <span class="reputation-score" title="reputation score 38535" dir="ltr">38.5k</span><span title="13 gold badges"><span class="badge1"></span><span class="badgecount">13</span></span><span title="78 silver badges"><span class="badge2"></span><span class="badgecount">78</span></span><span title="170 bronze badges"><span class="badge3"></span><span class="badgecount">170</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-09-19 11:07:28Z" class="relativetime">Sep 19 '13 at 11:07</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1872618/nikita"><div class="gravatar-wrapper-32"><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/dcfa0b4f0f7c9496efadebd7d8726899" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1872618/nikita">Nikita</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">728</span><span title="4 silver badges"><span class="badge2"></span><span class="badgecount">4</span></span><span title="5 bronze badges"><span class="badge3"></span><span class="badgecount">5</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18892969" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-34233234" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="warm">10</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I like this answer a lot because it contains all the different behavior which then results in different usage.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/1536976/trilarion" title="2434 reputation" class="comment-user">Trilarion</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment34233234_18892969"><span title="2014-03-19 09:16:49Z" class="relativetime-clean">Mar 19 '14 at 9:16</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-18892969" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="626768"></a>
+<div id="answer-626768" class="answer" data-answerid="626768" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="626768">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">33</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The key difference is that tuples are immutable.  This means that you cannot change the values in a tuple once you have created it.</p>
+
+<p>So if you're going to need to change the values use a List.</p>
+
+<p>Benefits to tuples:</p>
+
+<ol>
+<li>Slight performance improvement.</li>
+<li>As a tuple is immutable it can be used as a key in a dictionary.</li>
+<li>If you can't change it neither can anyone else, which is to say you don't need to worry about any API functions etc. changing your tuple without being asked.</li>
+</ol>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/626768" title="short permalink to this answer" class="short-link" id="link-post-626768">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/626768/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/626768/revisions" title="show all edits to this post">edited <span title="2014-10-01 20:18:16Z" class="relativetime">Oct 1 '14 at 20:18</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/3711588/tmthyjames"><div class="gravatar-wrapper-32"><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/picture" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/3711588/tmthyjames">tmthyjames</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">89</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-03-09 15:42:38Z" class="relativetime">Mar 9 '09 at 15:42</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/3171/dave-webb"><div class="gravatar-wrapper-32"><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/a780bab849bc39176f044f5effbba7da" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/3171/dave-webb">Dave Webb</a><br>
+        <span class="reputation-score" title="reputation score 96666" dir="ltr">96.7k</span><span title="25 gold badges"><span class="badge1"></span><span class="badgecount">25</span></span><span title="206 silver badges"><span class="badge2"></span><span class="badgecount">206</span></span><span title="247 bronze badges"><span class="badge3"></span><span class="badgecount">247</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-626768" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-42811093" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Note that a tuple is only immutable <i>if all of its elements are</i>. You could say the same is true of all immutable collections, like <code>frozenset</code> or the various third-party frozen dict/tree/etc. types, but none of those allow you to add mutable elements. (And of course a tuple is only hashable if all of its elements are, which is handles in the usual EAFP way, so <code>d[1, [2]]</code> will raise <code>TypeError: unhashable type: 'list'</code>.)</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/908494/abarnert" title="119346 reputation" class="comment-user">abarnert</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment42811093_626768"><span title="2014-11-26 20:45:18Z" class="relativetime-clean">Nov 26 '14 at 20:45</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-626768" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="626764"></a>
+<div id="answer-626764" class="answer" data-answerid="626764" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="626764">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">12</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Lists are mutable; tuples are not.</p>
+
+<p>From <a href="http://docs.python.org/2/tutorial/datastructures.html" rel="nofollow">docs.python.org/2/tutorial/datastructures.html</a> </p>
+
+<blockquote>
+  <p>Tuples are immutable, and usually contain an heterogeneous sequence of
+  elements that are accessed via unpacking (see later in this section)
+  or indexing (or even by attribute in the case of namedtuples). Lists
+  are mutable, and their elements are usually homogeneous and are
+  accessed by iterating over the list.</p>
+</blockquote>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/626764" title="short permalink to this answer" class="short-link" id="link-post-626764">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/626764/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/626764/revisions" title="show all edits to this post">edited <span title="2014-02-04 20:47:28Z" class="relativetime">Feb 4 '14 at 20:47</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2009-03-09 15:41:59Z" class="relativetime">Mar 9 '09 at 15:41</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/37213/duffymo"><div class="gravatar-wrapper-32"><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/eeec80237213c91e5bab56b77ac5b8ca" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/37213/duffymo">duffymo</a><br>
+        <span class="reputation-score" title="reputation score 197945" dir="ltr">198k</span><span title="12 gold badges"><span class="badge1"></span><span class="badgecount">12</span></span><span title="198 silver badges"><span class="badge2"></span><span class="badgecount">198</span></span><span title="366 bronze badges"><span class="badge3"></span><span class="badgecount">366</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-626764" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="7" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-439437" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I really think you should also consider the semantic implications (see my answer below).</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/11992/nikow" title="9642 reputation" class="comment-user">nikow</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment439437_626764"><span title="2009-03-09 16:07:29Z" class="relativetime-clean">Mar 9 '09 at 16:07</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-439610" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">D'oh!  I'll try to do better next time...</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/37213/duffymo" title="197945 reputation" class="comment-user">duffymo</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment439610_626764"><span title="2009-03-09 16:43:49Z" class="relativetime-clean">Mar 9 '09 at 16:43</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-440050" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Feel free to edit your answer to include a relevant link.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/10661/s-lott" title="218089 reputation" class="comment-user">S.Lott</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment440050_626764"><span title="2009-03-09 18:33:51Z" class="relativetime-clean">Mar 9 '09 at 18:33</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-440289" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hardly seems worth the effort now, but thanks for the heads up.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/37213/duffymo" title="197945 reputation" class="comment-user">duffymo</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment440289_626764"><span title="2009-03-09 19:50:02Z" class="relativetime-clean">Mar 9 '09 at 19:50</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-15291550" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">It is funny to see how other answers here have the same quality like this, but only this gets hated because of one commenter stating "-1". And there is another answer that has just 0.5 times the quality, but only 0.1 times the downvotes.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/76722/phresnel" title="21477 reputation" class="comment-user">phresnel</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment15291550_626764"><span title="2012-07-19 12:46:40Z" class="relativetime-clean">Jul 19 '12 at 12:46</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-626764" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link " title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" onclick="">show <b>7</b> more comments</a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="627901"></a>
+<div id="answer-627901" class="answer" data-answerid="627901" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="627901">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Lists are intended to be homogeneous sequences, while tuples are heterogeneous data structures. </p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/627901" title="short permalink to this answer" class="short-link" id="link-post-627901">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/627901/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2009-03-09 20:29:55Z" class="relativetime">Mar 9 '09 at 20:29</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/75171/pquers"><div class="gravatar-wrapper-32"><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/c875b9bb282e1b19519e173e46652dda" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/75171/pquers">pquers</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">77</span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-627901" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-30091169" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">At this point, this answer doesn't add anything to the discussion, as there are many other better answers.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/119527/jonathon-reinhart" title="44696 reputation" class="comment-user">Jonathon Reinhart</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment30091169_627901"><span title="2013-11-25 02:14:34Z" class="relativetime-clean">Nov 25 '13 at 2:14</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-44005883" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This does not provide an answer to the question. To critique or request clarification from an author, leave a comment below their post.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/1529673/strawberry" title="10910 reputation" class="comment-user">Strawberry</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment44005883_627901"><span title="2015-01-06 12:30:33Z" class="relativetime-clean">Jan 6 at 12:30</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-627901" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="16097958"></a>
+<div id="answer-16097958" class="answer" data-answerid="16097958" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="16097958">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Lists are for looping, tuples are for structures i.e. <code>"%s %s" %tuple</code>.</p>
+
+<p>Lists are usually homogeneous, tuples are usually heterogeneous. </p>
+
+<p>Lists are for variable length, tuples are for fixed length.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/16097958" title="short permalink to this answer" class="short-link" id="link-post-16097958">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/16097958/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/16097958/revisions" title="show all edits to this post">edited <span title="2013-06-03 06:48:52Z" class="relativetime">Jun 3 '13 at 6:48</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/505893/bluish"><div class="gravatar-wrapper-32"><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/71828e3594c57e13f477c0db81b36e25" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/505893/bluish">bluish</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">6,130</span><span title="9 gold badges"><span class="badge1"></span><span class="badgecount">9</span></span><span title="48 silver badges"><span class="badge2"></span><span class="badgecount">48</span></span><span title="93 bronze badges"><span class="badge3"></span><span class="badgecount">93</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-04-19 05:43:14Z" class="relativetime">Apr 19 '13 at 5:43</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/201393/srinivas-reddy-thatiparthy"><div><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/7f7d32c5f3655a2143953feab8b4283f" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/201393/srinivas-reddy-thatiparthy">Srinivas Reddy Thatiparthy</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">5,514</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="17 silver badges"><span class="badge2"></span><span class="badgecount">17</span></span><span title="41 bronze badges"><span class="badge3"></span><span class="badgecount">41</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-16097958" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-16097958" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="18181253"></a>
+<div id="answer-18181253" class="answer" data-answerid="18181253" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="18181253">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">3</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>It's <a href="http://stackoverflow.com/a/626871/915501">been mentioned</a> that the difference is largely semantic: people expect a tuple and list to represent different information. But this goes further than a guideline, some libraries actually behave differently based on what they are passed. Take numpy for example (copied from <a href="http://stackoverflow.com/q/18181076/915501">another post</a> where I ask for more examples): </p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="pun">&gt;&gt;&gt;</span><span class="pln"> </span><span class="kwd">import</span><span class="pln"> numpy </span><span class="kwd">as</span><span class="pln"> np
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a </span><span class="pun">=</span><span class="pln"> np</span><span class="pun">.</span><span class="pln">arange</span><span class="pun">(</span><span class="lit">9</span><span class="pun">).</span><span class="pln">reshape</span><span class="pun">(</span><span class="lit">3</span><span class="pun">,</span><span class="lit">3</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a
+array</span><span class="pun">([[</span><span class="lit">0</span><span class="pun">,</span><span class="pln"> </span><span class="lit">1</span><span class="pun">,</span><span class="pln"> </span><span class="lit">2</span><span class="pun">],</span><span class="pln">
+       </span><span class="pun">[</span><span class="lit">3</span><span class="pun">,</span><span class="pln"> </span><span class="lit">4</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">],</span><span class="pln">
+       </span><span class="pun">[</span><span class="lit">6</span><span class="pun">,</span><span class="pln"> </span><span class="lit">7</span><span class="pun">,</span><span class="pln"> </span><span class="lit">8</span><span class="pun">]])</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> idx </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="lit">1</span><span class="pun">,</span><span class="lit">1</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a</span><span class="pun">[</span><span class="pln">idx</span><span class="pun">]</span><span class="pln">
+</span><span class="lit">4</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> idx </span><span class="pun">=</span><span class="pln"> </span><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">1</span><span class="pun">]</span><span class="pln">
+</span><span class="pun">&gt;&gt;&gt;</span><span class="pln"> a</span><span class="pun">[</span><span class="pln">idx</span><span class="pun">]</span><span class="pln">
+array</span><span class="pun">([[</span><span class="lit">3</span><span class="pun">,</span><span class="pln"> </span><span class="lit">4</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">],</span><span class="pln">
+       </span><span class="pun">[</span><span class="lit">3</span><span class="pun">,</span><span class="pln"> </span><span class="lit">4</span><span class="pun">,</span><span class="pln"> </span><span class="lit">5</span><span class="pun">]])</span></code></pre>
+
+<p>Point is, while numpy may not be part of the standard library, it's a <em>major</em> python library, and within numpy lists and tuples are completely different things. </p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/18181253" title="short permalink to this answer" class="short-link" id="link-post-18181253">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/18181253/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/18181253/revisions" title="show all edits to this post">edited <span title="2013-09-20 07:54:32Z" class="relativetime">Sep 20 '13 at 7:54</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        <br>
+        
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-08-12 07:06:24Z" class="relativetime">Aug 12 '13 at 7:06</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/915501/shep"><div class="gravatar-wrapper-32"><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/b219b646efa3c74061977c39306c1841" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/915501/shep">Shep</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">2,313</span><span title="11 silver badges"><span class="badge2"></span><span class="badgecount">11</span></span><span title="30 bronze badges"><span class="badge3"></span><span class="badgecount">30</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-18181253" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-27890560" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">This isn't really a helpful answer. The difference is that <code>type(a_list) != type(a_tuple)</code>, so any piece of library code branching based on <code>type(x)</code> will behave differently</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/102441/eric" title="38535 reputation" class="comment-user">Eric</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment27890560_18181253"><span title="2013-09-19 13:14:08Z" class="relativetime-clean">Sep 19 '13 at 13:14</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-27918259" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">good point, I've edited the post: this is really just pointing out that the semantic guidelines are hardcoded into some libraries.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/915501/shep" title="2313 reputation" class="comment-user">Shep</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment27918259_18181253"><span title="2013-09-20 07:56:34Z" class="relativetime-clean">Sep 20 '13 at 7:56</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-42949742" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">It might be better to use examples from the stdlib/builtins than from third-party libraries. There are a number of places where you can use a single value or a tuple of values, and a list or other sequence is considered a single value. For example, <code>'%d %d' % [2, 3]</code> is a <code>TypeError</code>, because you're trying to pass a list to the first <code>%d</code> and you're not passing any value to the second <code>%d</code>. (However, there are counter-examples to this too, like <code>max</code>…)</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/908494/abarnert" title="119346 reputation" class="comment-user">abarnert</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment42949742_18181253"><span title="2014-12-01 20:23:24Z" class="relativetime-clean">Dec 1 '14 at 20:23</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-42991754" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">that's interesting, I didn't know there were any examples of this in the python standard library. A number of places you say?</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/915501/shep" title="2313 reputation" class="comment-user">Shep</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment42991754_18181253"><span title="2014-12-02 21:22:08Z" class="relativetime-clean">Dec 2 '14 at 21:22</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-18181253" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="16960687"></a>
+<div id="answer-16960687" class="answer" data-answerid="16960687" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="16960687">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">1</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The values of <strong>list</strong> can be changed any time but the values of <strong>tuples</strong> can't be change.</p>
+
+<p>The <strong>advantages and disadvantages</strong> depends upon the use. If you have such a data which you never want to change then you should have to use tuple, otherwise list is the best option.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/16960687" title="short permalink to this answer" class="short-link" id="link-post-16960687">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/16960687/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/16960687/revisions" title="show all edits to this post">edited <span title="2013-06-10 08:14:25Z" class="relativetime">Jun 10 '13 at 8:14</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/505893/bluish"><div class="gravatar-wrapper-32"><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/71828e3594c57e13f477c0db81b36e25" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/505893/bluish">bluish</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">6,130</span><span title="9 gold badges"><span class="badge1"></span><span class="badgecount">9</span></span><span title="48 silver badges"><span class="badge2"></span><span class="badgecount">48</span></span><span title="93 bronze badges"><span class="badge3"></span><span class="badgecount">93</span></span>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2013-06-06 11:14:54Z" class="relativetime">Jun 6 '13 at 11:14</span>
+    </div>
+    <div class="user-gravatar32">
+        <span class="anonymous-gravatar"></span>
+    </div>
+    <div class="user-details">
+        user2436485<br>
+        
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-16960687" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-16960687" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="26128173"></a>
+<div id="answer-26128173" class="answer downvoted-answer" data-answerid="26128173" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="26128173">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">-3</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>List is mutable and tuples is immutable. The main difference between mutable and immutable is memory usage when you are trying to append an item. </p>
+
+<p>When you create a variable, some fixed memory is assigned to the variable. If it is a list, more memory is assigned than actually used. E.g. if current memory assignment is 100 bytes, when you want to append the 101th byte, maybe another 100 bytes will be assigned (in total 200 bytes in this case). </p>
+
+<p>However, if you know that you are not frequently add new elements, then you should use tuples. Tuples assigns exactly size of the memory needed, and hence saves memory, especially when you use large blocks of memory. </p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/26128173" title="short permalink to this answer" class="short-link" id="link-post-26128173">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/26128173/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-09-30 19:01:37Z" class="relativetime">Sep 30 '14 at 19:01</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/3579327/tony"><div><img src="./python - What's the difference between list and tuples  - Stack Overflow_files/12c84439cec594717a2ad8138a7bffd6" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/3579327/tony">Tony</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">17</span><span title="5 bronze badges"><span class="badge3"></span><span class="badgecount">5</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-26128173" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-40952575" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">While some of that is technically true, that isn't really the crucial difference between mutable and immutable types. The bigger difference is that mutable types can be changed after construction, while immutable types can't.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/2922139/roger-fan" title="2446 reputation" class="comment-user">Roger Fan</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment40952575_26128173"><span title="2014-09-30 19:25:10Z" class="relativetime-clean">Sep 30 '14 at 19:25</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-40952837" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">That's not the why either. Memory and mutability have nothing to do with each other. That's simply an implementation detail specific to lists. Memory is also not assigned to variables, it's assigned to the objects. Variables are then just references to those objects.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/2922139/roger-fan" title="2446 reputation" class="comment-user">Roger Fan</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#comment40952837_26128173"><span title="2014-09-30 19:32:55Z" class="relativetime-clean">Sep 30 '14 at 19:32</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-26128173" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="http://stackoverflow.com/questions/626759/answer/submit" method="post" class="post-form">
+						    <input type="hidden" id="post-id" value="626759">
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false">
+                            <input type="hidden" name="referrer" value="https://www.google.co.uk/">
+							<h2 class="space">Your Answer</h2>
+
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.options.snippets.enabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            prepareEditor({
+                heartbeatType: 'answer',
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                ,immediatelyShowMarkdownHelp:true
+                });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li id="wmd-bold-button" class="wmd-button" style="left: 0px;"><span style="background-position: 0px -20px;"></span></li><li id="wmd-italic-button" class="wmd-button" style="left: 25px;"><span style="background-position: -20px -20px;"></span></li><li id="wmd-spacer1" class="wmd-spacer" style="left: 50px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-link-button" class="wmd-button" style="left: 75px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-quote-button" class="wmd-button" style="left: 100px;"><span style="background-position: -60px -20px;"></span></li><li id="wmd-code-button" class="wmd-button" style="left: 125px;"><span style="background-position: -80px -20px;"></span></li><li id="wmd-image-button" class="wmd-button" style="left: 150px;"><span style="background-position: -100px -20px;"></span></li><li id="wmd-spacer2" class="wmd-spacer" style="left: 175px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-olist-button" class="wmd-button" style="left: 200px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-ulist-button" class="wmd-button" style="left: 225px;"><span style="background-position: -140px -20px;"></span></li><li id="wmd-heading-button" class="wmd-button" style="left: 250px;"><span style="background-position: -160px -20px;"></span></li><li id="wmd-hr-button" class="wmd-button" style="left: 275px;"><span style="background-position: -180px -20px;"></span></li><li id="wmd-spacer3" class="wmd-spacer" style="left: 300px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-undo-button" class="wmd-button" style="left: 325px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-redo-button" class="wmd-button" style="left: 350px;"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="25d7230266692fc2a7742a31d99a100e">
+        <input id="author" name="author" type="text">
+    </div>
+</div>
+							<div style="position: relative;">
+								
+            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="http://stackoverflow.com/users/login?returnurl=%2fquestions%2f626759%2fwhats-the-difference-between-list-and-tuples%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Stack Exchange</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid">
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false">
+                    <input type="hidden" name="use-google" class="use-google" value="false">
+                    <input type="button" class="submit-openid" value="Submit" style="display:none">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <script>
+                StackExchange.ready(function () {
+                    StackExchange.helpers.bindHelpOverlayEvents($('.vm input'));
+                });
+            </script>
+            <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="text" size="30" maxlength="100" value="" tabindex="106">
+                    <span class="edit-field-overlay">required, but not shown</span>
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', '%2fquestions%2f626759%2fwhats-the-difference-between-list-and-tuples%23new-answer');
+                    }
+                );
+            </script>
+            <noscript>
+                        &lt;h3&gt;Post as a guest&lt;/h3&gt;
+    &lt;div class="form-item"&gt;
+        &lt;table&gt;
+        &lt;tr&gt;
+                    &lt;script&gt;
+                StackExchange.ready(function () {
+                    StackExchange.helpers.bindHelpOverlayEvents($('.vm input'));
+                });
+            &lt;/script&gt;
+            &lt;td class="vm"&gt;
+                &lt;div&gt;
+                    &lt;label for="display-name"&gt;Name&lt;/label&gt;
+                    &lt;input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105"&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;label for="m-address"&gt;Email&lt;/label&gt;
+                    &lt;input id="m-address" name="m-address" type="text" size="30" maxlength="100" value="" tabindex="106"&gt;
+                    &lt;span class="edit-field-overlay"&gt;required, but not shown&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+            </noscript>
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples#" class="discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" target="_blank">terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/python" class="post-tag" title="show questions tagged &#39;python&#39;" rel="tag">python</a> <a href="http://stackoverflow.com/questions/tagged/list" class="post-tag" title="show questions tagged &#39;list&#39;" rel="tag">list</a> <a href="http://stackoverflow.com/questions/tagged/tuples" class="post-tag" title="show questions tagged &#39;tuples&#39;" rel="tag">tuples</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2009-03-09 15:41:25Z"><b>5 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>89046 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples?lastactivity" class="lastactivity-link" title="2014-10-01 20:18:16Z">3 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Blog
+                </div>
+                <hr>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://blog.stackoverflow.com/2015/01/andreessen-horowitz-invests-in-stack-exchange/?cb=1" class="question-hyperlink">
+<div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://blog.stackoverflow.com/2015/01/andreessen-horowitz-invests-in-stack-exchange/?cb=1" class="question-hyperlink">Andreessen Horowitz Invests in Stack Exchange</a>
+                </div>
+                <br class="cbt">
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk309953967",[17,2221]).setZone(45) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk309953967">
+            </div>  
+        <div id="hireme">
+            <script>
+;(function(e){var a=window.$,p=window.StackExchange,f=100,c="div#hireme,div.hireme",g=decodeURIComponent,i=encodeURIComponent,r=setTimeout,h=document,q,b,m={},l=location.hash;if(l.length>1){l.substr(1).split("&").forEach(function(t){var u=t.split("=");this[g(u[0])]=g(u[1])},m)}b=m.ac||m.accountid||(p&&p.options&&p.options.user&&p.options.user.accountId);if(b){m.ac=b}if(!m.tags){q=a(".post-taglist .post-tag").map(function(){return a(this).text()});if(q.length>0){m.tags=Array.prototype.join.call(q,";")}}if(l==="#large"){m.l=1}if(l==="#abort"){m.abort=1}function j(t){return a(t).html().replace(/\s+/g,"").length>0}function s(){var t=a("#sidebar [id^='adzerk'].everyonelovesstackoverflow");if(t.length===0){return true}return !j(t)}function n(){var t=a(c);if(t.length>0){if(m.l||a("#careersadsdoublehigh").length>0){m.l=1}var v=t.map(function(z,y){return"d="+y.id}).get().join("&");var x=["l","ip","ac","eng","prov","tags"];var u=Object.keys(m).filter(function(y){return x.indexOf(y)!==-1}).map(function(y){return i(y)+"="+i(m[y])}).join("&");if(u){v+="&"+u}var w=h.createElement("script");w.type="text/javascript";w.src=e+(e.indexOf("?")===-1?"?":"&")+v;h.body.appendChild(w)}}function o(){if(s()){d=r(o,f);return}if(m.abort){k()}n()}function k(){clearTimeout(d);a(c).each(function(){var t=a(this);if(!j(t)){var v=t;var u=t.parents(".everyonelovesstackoverflow").first();if(u.length>0){v=u}v.remove()}})}r(k,2000);var d=r(o,f)}).apply(null, ["//clc.stackoverflow.com/j/p"]);            </script>
+            
+        </div>
+			<div style="margin-bottom: 10px;">
+        
+
+<style type="text/css">
+#newsletter-ad {
+    width: 190px;
+    height: 250px;
+    overflow: hidden;
+    background: url('//cdn.sstatic.net/stackoverflow/img/newsletter-ad.png');
+    padding: 0 15px 0 15px;
+}
+#newsletter-ad-header {
+    margin-top: 60px;
+}
+#newsletter-ad ul {
+    margin: 1em 0 1em 1.5em;
+}
+#newsletter-ad ul li {
+    margin-bottom: 5px;
+}
+#newsletter-signup-container {
+    text-align: center;
+}
+#newsletter-preview-container {
+    margin-top: 10px;
+    text-align: center;
+}
+#newsletter-email-input {
+    width: 200px;
+}
+</style>
+
+<script>
+    StackExchange.ready(function () {
+        StackExchange.newsletterAd.init();
+    });
+</script>
+
+<div id="newsletter-ad">
+    <p id="newsletter-ad-header">Get the <b>weekly newsletter!</b></p>
+    <ul>
+        <li>Top questions and answers</li>
+        <li>Important announcements</li>
+        <li>Unanswered questions</li>
+    </ul>
+    <div id="newsletter-signup-container"><input id="newsletter-signup" type="button" value="Sign up for the newsletter"></div>
+    <p id="newsletter-preview-container">see an <a href="http://stackexchange.com/newsletters/newsletter?site=stackoverflow.com" id="newsletter-preview">example newsletter</a></p>
+    <div class="dno">
+        
+<p class="privacy-policy-agreement">
+By subscribing, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" target="_blank">terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1">
+    </div>
+</div>
+
+    </div>  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/1708510?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted large">119</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/1708510/python-list-vs-tuple-when-to-use-each?lq=1" class="question-hyperlink">python: list vs tuple, when to use each?</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/19642633?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">-5</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/19642633/what-is-the-difference-between-a-tuple-and-an-array?lq=1" class="question-hyperlink">What is the difference between a tuple and an array</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/9351855?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/9351855/python-differences-and-similiarities-between-tuples-and-lists?lq=1" class="question-hyperlink">Python: Differences and similiarities between tuples and lists</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/18895406?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/18895406/why-implement-two-so-similar-data-structures-like-list-and-tuple?lq=1" class="question-hyperlink">Why implement two so similar data structures like List and Tuple</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/9846556?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">-1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/9846556/difference-between-the-parameters-in-python?lq=1" class="question-hyperlink">difference between the parameters in python</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/16649294?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/16649294/what-is-the-difference-between-and?lq=1" class="question-hyperlink">what is the difference between [[],[],…] and [(),(),…]</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/855110?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">92</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/855110/why-is-the-use-of-tuples-in-c-not-more-common?lq=1" class="question-hyperlink">Why is the use of tuples in C++ not more common?</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/363944?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">59</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/363944/python-idiom-to-return-first-item-or-none?lq=1" class="question-hyperlink">Python idiom to return first item or None</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/11261662?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">20</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/11261662/tuples-readability-0-0-vs-0-0?lq=1" class="question-hyperlink">Tuples readability : [0,0] vs (0,0)</a>
+</div><div class="spacer">
+	<a href="http://stackoverflow.com/q/6063494?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">8</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/6063494/python-efficiency-lists-vs-tuples?lq=1" class="question-hyperlink">Python efficiency: lists vs. tuples</a>
+</div>					<div class="spacer more">
+				<a href="http://stackoverflow.com/questions/linked/626759?lq=1">see more linked questions…</a>
+			</div>
+	</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/1708510?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">119
+    </div>
+</a><a href="http://stackoverflow.com/questions/1708510/python-list-vs-tuple-when-to-use-each?rq=1" class="question-hyperlink">python: list vs tuple, when to use each?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/2345092?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">6
+    </div>
+</a><a href="http://stackoverflow.com/questions/2345092/python-why-is-comparison-between-lists-and-tuples-not-supported?rq=1" class="question-hyperlink">Python: Why is comparison between lists and tuples not supported?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/2407398?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">56
+    </div>
+</a><a href="http://stackoverflow.com/questions/2407398/python-merge-items-of-two-lists-into-a-list-of-tuples?rq=1" class="question-hyperlink">Python - merge items of two lists into a list of tuples</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/2917372?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">44
+    </div>
+</a><a href="http://stackoverflow.com/questions/2917372/how-to-search-a-list-of-tuples-in-python?rq=1" class="question-hyperlink">How to search a list of tuples in Python</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/3121979?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted large">119
+    </div>
+</a><a href="http://stackoverflow.com/questions/3121979/how-to-sort-list-tuple-of-lists-tuples?rq=1" class="question-hyperlink">How to sort (list/tuple) of lists/tuples?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/9226931?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">2
+    </div>
+</a><a href="http://stackoverflow.com/questions/9226931/extract-different-values-from-list-of-tuples?rq=1" class="question-hyperlink">Extract different values from list of tuples</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/9351855?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/9351855/python-differences-and-similiarities-between-tuples-and-lists?rq=1" class="question-hyperlink">Python: Differences and similiarities between tuples and lists</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/9969649?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">7
+    </div>
+</a><a href="http://stackoverflow.com/questions/9969649/difference-between-list-and-tuple-minus-immutability-in-python?rq=1" class="question-hyperlink">Difference between list and tuple (minus immutability) in Python?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/12496435?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">3
+    </div>
+</a><a href="http://stackoverflow.com/questions/12496435/difference-accessing-elements-of-tuple-and-list?rq=1" class="question-hyperlink">Difference accessing element(s) of tuple and list</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/25912640?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/25912640/what-is-the-difference-between-a-list-of-tuples-and-a-list-of-objects?rq=1" class="question-hyperlink">What is the difference between a list of tuples and a list of objects?</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/37392/how-interchangeable-are-phd-students-to-most-professors" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How interchangeable are PhD students to most professors?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/222857/word-that-describes-both-skills-and-experience-together" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Word that describes both skills and experience together
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-gaming" title="Arqade"></div><a href="http://gaming.stackexchange.com/questions/202612/game-identification-picking-a-lock-on-a-broken-door" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:41 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Game identification: Picking a lock on a broken door
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/8042/one-prize-infinitely-many-choices" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    One prize, infinitely many choices
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1116172/how-to-solve-trigonometric-equations" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to Solve Trigonometric Equations?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/11917/why-is-bleed-air-taken-from-some-stage-of-the-compressor-used-for-de-icing-why" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why is bleed air taken from some stage of the compressor used for de-icing? Why not e.g. exhaust gas?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-parenting" title="Parenting Stack Exchange"></div><a href="http://parenting.stackexchange.com/questions/18401/how-do-i-handle-a-10-year-old-girl-in-love" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:228 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do I handle a 10 year old girl "in love"?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1115971/probability-that-product-of-any-four-natural-numbers-is-divisible-by-5" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Probability that product of any four natural numbers is divisible by 5
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-magento" title="Magento Stack Exchange"></div><a href="http://magento.stackexchange.com/questions/53061/how-to-set-inventory-of-all-product-fom-9999-to-1" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:479 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to set inventory of all product fom 9999 to 1
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/9035/dragons-and-aviation-bureaucracy" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Dragons and aviation bureaucracy
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-music" title="Music: Practice &amp; Theory Stack Exchange"></div><a href="http://music.stackexchange.com/questions/29041/im-tonedeaf-if-i-sing-to-my-baby-will-i-damage-his-her-musical-ear" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:240 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    I'm tonedeaf. If I sing to my baby, will I damage his/her musical ear?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/55698/what-is-a-wyrm-in-dd" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is a Wyrm in D&amp;D?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/44680/showcase-your-language-one-vote-at-a-time-experimental-challenge" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Showcase your language one vote at a time [experimental challenge]
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="http://mathoverflow.net/questions/194641/infinite-graphs-isomorphic-to-their-line-graph" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Infinite graphs isomorphic to their line graph
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-startups" title="Startups Stack Exchange"></div><a href="http://startups.stackexchange.com/questions/3112/how-can-i-know-if-my-developer-is-doing-a-good-job" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:573 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How can I know if my developer is doing a good job?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="http://tex.stackexchange.com/questions/224512/a-problem-with-times" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    A problem with \times
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/7979/chasing-pirates" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Chasing pirates
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/160548/what-enables-protons-to-give-new-properties-to-an-atom-every-time-one-is-added" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What enables protons to give new properties to an atom every time one is added?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/79816/knowing-when-there-has-been-a-data-breach-from-your-database" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Knowing when there has been a data breach from your database
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/11827/why-do-passenger-jets-accept-input-that-will-cause-the-aircraft-to-perform-dange" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do passenger jets accept input that will cause the aircraft to perform dangerous maneuvers it was not designed for?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/11929/lateral-cg-imbalances" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    lateral CG imbalances
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/64098/what-is-system-page-and-where-can-i-find-a-reference-for-it" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is System.Page and where can I find a reference for it?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1108419/whats-your-favorite-proof-accessible-to-a-general-audience" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What's your favorite proof accessible to a general audience?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="http://workplace.stackexchange.com/questions/40645/how-am-i-supposed-to-bill-the-company" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How am I supposed to bill the company?
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stackoverflow.com/feeds/question/626759" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/626759/ivc/aa3a');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/626759/ivc/aa3a" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang">lang-py</div></div>
+
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://blog.stackoverflow.com/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackexchange.com/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick="StackExchange.switchMobile(&quot;on&quot;)">mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (14)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (10)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo © 2015 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a>                   with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2015.1.23.2216
+            </div>
+            
+        </div>
+    <iframe id="global-auth-frame" style="display:none" src="./python - What's the difference between list and tuples  - Stack Overflow_files/read.html"></iframe></div>
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled&lt;img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;&lt;/div&gt;
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('python,list,tuples');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        
+        ga('set', 'dimension2', '|python|list|tuples|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>        
+    
+    
+<iframe class="transover-tooltip" style="text-align: left; border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px; position: fixed; border-radius: 5px; z-index: 2147483647; top: -1500px; display: none; background: rgb(252, 247, 217);"></iframe><iframe class="transover-tooltip" style="text-align: left; border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px; position: fixed; border-radius: 5px; z-index: 2147483647; top: -1500px; display: none; background: rgb(252, 247, 217);"></iframe></body></html>

@@ -1,0 +1,24 @@
+
+<!-- saved from url=(0180)https://stackauth.com/auth/global/read?request=ks5l7Ve3XWti1W6tUKLjwJROOeCqMjsjyOcWfSLCrF2lCY9re%2BddlaVglyhsvCikaNfUo5DPeFMix8eMjHq%2BLg%3D%3D&nonce=ADvCVAAAAADfhoTQ9%2BYoaQ%3D%3D -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                  <script>
+                  var data = {"ReadSession":"https://stackauth.com/auth/global/read-session","Request":"ks5l7Ve3XWti1W6tUKLjwJROOeCqMjsjyOcWfSLCrF2lCY9re+ddlaVglyhsvCikaNfUo5DPeFMix8eMjHq+Lg==","Nonce":"ADvCVAAAAADfhoTQ9+YoaQ==","Referrer":"http://stackoverflow.com/questions/626759/whats-the-difference-between-list-and-tuples","StorageName":"GlobalLogin"};
+
+                  var toMsg = window.parent;
+
+                  var obj = localStorage.getItem(data.StorageName);
+                  if(obj != null) {
+                  var req = new XMLHttpRequest();
+                  req.open('POST', data.ReadSession+'?request='+encodeURIComponent(data.Request)+'&nonce='+encodeURIComponent(data.Nonce)+'&seriesAndToken='+encodeURIComponent(obj), false);
+                  req.send(null);
+                  
+                    if(req.status == 200){
+                      toMsg.postMessage(req.responseText, data.Referrer);
+                    }else{
+                      toMsg.postMessage('No Session', data.Referrer);
+                    }
+                  }else{
+                    toMsg.postMessage('No Local Storage', data.Referrer);
+                  }
+                  </script>
+                  <style type="text/css"></style></head><body><iframe class="transover-tooltip" style="text-align: left; border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px; position: fixed; border-radius: 5px; z-index: 2147483647; top: -1500px; display: none; background: rgb(252, 247, 217);"></iframe></body></html>

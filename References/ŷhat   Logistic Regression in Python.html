@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)http://blog.yhathq.com/posts/logistic-regression-and-python.html -->
+<html class="js wf-hellenicwide-n4-active wf-museoslab-n3-active wf-museoslab-n5-active wf-museoslab-n7-active wf-museoslab-n8-active wf-proximanovaextracondensed-n7-active wf-active"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>ŷhat | Logistic Regression in Python</title>
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="http://blog.yhathq.com/static/favicon.ico" rel="shortcut icon">
+
+        
+<meta name="description" content="yhathq blog - using logistic regression in python">
+<meta name="keywords" content="logistic regression, logistic regression using python, scikit learn, sklearn logistic regression, logit, yhat logistic regression, yhathq logistic regression, logistic regression python example, logistic regression python tutorial, python for data analysis, yhathq, yhat, yhat predictive models, yhat blog, yhathq blog, logit model, binomial regression, multinomial regression, logistic regression in r, logistic regression in r and python, types of regression, regression analysis, regression for predicting categorical data, categorical data, dependent variable, predictor variables, logitstic regression and dependent variable, statistics, statistical model, machine learning">
+
+
+        <!-- facebook open graph tags -->
+<meta property="og:title" content="ŷhat | Logistic Regression in Python">
+<meta property="og:type" content="website">
+<meta property="og:url" content="http://blog.yhathq.com/posts/logistic-regression-and-python.html">
+<meta property="og:image" content="http://f.cl.ly/items/0d2Z1z3Z3E2z3Y1g1K0J/logo-square.png">
+<meta property="og:site_name" content="ŷhat | Blog">
+<meta property="fb:admins" content="1018260045">
+<meta property="og:description" content="
+
+Logistic Regression is a statistical technique capable of predicting a binary outcome. It&#39;s a well-known strategy, widely used in disciplines ranging from credit and finance to medicine to criminology and other social sciences. Logistic regression is fairly intuitive and very effective; you&#39;re likely to find it among the first few chapters of a machine learning or applied statistics book and it&#39;s usage is covered by many stats courses.
+
+It&#39;s not hard to find quality logistic regression ...">
+
+<!-- twitter -->
+<meta property="twitter:account_id" content="1081568149">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@yhathq">
+<meta name="twitter:title" content="ŷhat | Logistic Regression in Python">
+<meta name="twitter:description" content="
+
+Logistic Regression is a statistical technique capable of predicting a binary outcome. It&#39;s a well-known strategy, widely used in disciplines ranging from credit and finance to medicine to criminology and other social sciences. Logistic regression is fairly intuitive and very effective; you&#39;re likely to find it among the first few chapters of a machine learning or applied statistics book and it&#39;s usage is covered by many stats courses.
+
+It&#39;s not hard to find quality logistic regression ...">
+<meta name="twitter:creator" content="@yhathq">
+<meta name="twitter:image:src" content="http://f.cl.ly/items/0d2Z1z3Z3E2z3Y1g1K0J/logo-square.png">
+<meta name="twitter:domain" content="yhathq.com">
+
+        <link href="./ŷhat   Logistic Regression in Python_files/css" rel="stylesheet" type="text/css">
+        <link href="http://blog.yhathq.com/static/css/yhat-blog.css?v=2" rel="stylesheet">
+
+        <script type="text/javascript" async="" src="./ŷhat   Logistic Regression in Python_files/inpage_linkid.js" id="undefined"></script><script type="text/javascript" async="" src="./ŷhat   Logistic Regression in Python_files/mixpanel-2.2.min.js"></script><script type="text/javascript" async="" src="./ŷhat   Logistic Regression in Python_files/dc.js"></script><script id="twitter-wjs" src="./ŷhat   Logistic Regression in Python_files/widgets.js"></script><script type="text/javascript" async="" src="./ŷhat   Logistic Regression in Python_files/heap.js"></script><script type="text/javascript" src="./ŷhat   Logistic Regression in Python_files/xqn4fcl.js"></script>
+        <style type="text/css">.tk-museo-slab{font-family:"museo-slab",serif;}.tk-hellenic-wide{font-family:"hellenic-wide",sans-serif;}.tk-proxima-nova-extra-condensed{font-family:"proxima-nova-extra-condensed",sans-serif;}</style><link rel="stylesheet" href="http://use.typekit.net/c/bedb7b/1w;hellenic-wide,2,P9P:N:n4;museo-slab,2,SKB:N:n3,WH7:N:n5,VnC:N:n7,QL3:N:n8;proxima-nova-extra-condensed,2,SCm:N:n7/d?3bb2a6e53c9684ffdc9a9aff1d5b2a62de246c40fc2071e052ac61ad78c3acb4fe71c7bd687e19af53f0911d20156723746c6a27fdec6e4115cdafb37ed38c1226f41da4293a8ecf55a4cbb174587286e3bd6a7990a3ee9615a98153084ec2235b"><script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+        <script src="./ŷhat   Logistic Regression in Python_files/modernizr.js"></script><style type="text/css"></style>
+        
+        <!-- start Optimizely --><script src="./ŷhat   Logistic Regression in Python_files/394671342.js"></script><!-- end Optimizely -->
+
+<!-- start Heap --><script type="text/javascript">window.heap=window.heap||[];heap.load=function(a){window._heapid=a;var b=document.createElement("script");b.type="text/javascript",b.async=!0,b.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap.js";var c=document.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c);var d=function(a){return function(){heap.push([a].concat(Array.prototype.slice.call(arguments,0)))}},e=["identify","track"];for(var f=0;f<e.length;f++)heap[e[f]]=d(e[f])};heap.load("1998133567");</script><!-- end Heap -->
+    <style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style></head>
+    <body data-twttr-rendered="true"><div id="MathJax_Message" style="display: none;"></div>
+        <header>
+    <div class="container">
+        <h1 class="logo">
+            <a href="http://promo.yhathq.com/yhat-signup-form/">
+                  <span class="yo">ŷ</span><span class="yg">hat</span>
+                  <!--<img class="hat" src="../static/img/hat-xmas.svg" alt=""/>-->
+              </a>
+          </h1>
+        <nav style="display: block;">
+            <ul class="header-menu menu">
+                <li class="dropdown-menu">
+                    <a class="hidden-xs" href="https://yhathq.com/products">Products <span class="new-badge top">new</span> <span class="icon icon-angle-down"></span></a>
+                    <ul>
+                        <li><a id="header-products-scienceops" href="https://yhathq.com/products/scienceops">ScienceOps</a></li>
+                        <li><a id="header-products-sciencebox" href="https://yhathq.com/products/sciencebox">ScienceBox &nbsp; &nbsp;<span class="new-badge">new</span></a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-menu">
+                    <a id="header-about">Solutions<span class="icon icon-angle-down"></span></a>
+                    <ul>
+                      <li class="hidden-xs"><a id="solutions-project-collaboration" href="https://yhathq.com/products/sciencebox#product-overview">Project Collaboration</a></li>
+                        <li class="hidden-xs"><a id="solutions-reduce-IT-overhead" href="https://yhathq.com/products/sciencebox#technical-specifications">Reduce IT Overhead</a></li>
+                        <li class="hidden-xs"><a id="solutions-productize-data-science" href="https://yhathq.com/products/scienceops#product-overview">Productize Data Science</a></li>
+                        <li class="hidden-xs"><a id="header-products-sciencebox" href="https://yhathq.com/services">Data Science Consulting</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown-menu">
+                    <a id="header-about" href="https://yhathq.com/about">About <span class="icon icon-angle-down"></span></a>
+                    <ul>
+                        <li class="hidden-xs"><a id="header-about" href="https://yhathq.com/about">Company</a></li>
+                        <li class="hidden-xs"><a id="header-about-faq" href="https://yhathq.com/about/faq">FAQ</a></li>
+                        <li class="hidden-xs"><a id="header-about-jobs" href="https://yhathq.com/about/jobs">Jobs</a></li>
+                    </ul>
+                </li>
+                <li><a id="header-blog" href="http://blog.yhathq.com/">Blog</a></li>
+                <li><a id="header-blog-rss" href="http://blog.yhathq.com/rss.xml">RSS</a></li>
+                <li><a id="header-docs" href="http://docs.yhathq.com/">Docs</a></li>
+                <li class="text-center"><iframe id="header-twitter-follow" scrolling="no" frameborder="0" allowtransparency="true" src="./ŷhat   Logistic Regression in Python_files/follow_button.df71e9fd75415d2cee8cfded99ebe79f.en.html" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 142px; height: 28px;"></iframe><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+            </ul>
+            <a id="mobile-menu-trigger" class="visible-xs"><span class="icon icon-menu"></span></a>
+        </nav>
+    </div>
+</header>
+
+        <div class="main" style="margin-bottom: 217px;">
+            
+
+
+    <section class="subscribe">
+  <form class="form-inline text-center subscribe-form" role="form">
+    <div class="form-group">
+      <input type="email" value="" name="EMAIL" class="form-control required email" placeholder="Email Address">
+    </div>
+    <button class="btn" type="submit">Get Updates</button>
+  </form>
+</section>
+
+
+
+
+<section class="pagination center-text top">
+    <div class="container">
+        <a href="http://blog.yhathq.com/">Back to blog</a>
+    </div>
+</section>
+
+<section class="article-header">
+    <div class="container">
+        <h1>Logistic Regression in Python</h1>
+        <h4>by  yhat </h4>
+        <h5><time class="time" pubdate="pubdate">March 3, 2013</time></h5>
+        
+        <a style="margin-bottom: 4.5px;" id="learn-more-sidebar" class="btn blue btn-sm" href="http://promo.yhathq.com/yhat-signup-form/" title="Learn More About yhat!">Learn More</a>
+        <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="./ŷhat   Logistic Regression in Python_files/tweet_button.b68aed79dd9ad79554bcd8c9141c94c8.en.html" class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 140px; height: 28px;"></iframe>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    </div>
+</section>
+
+<div class="container">
+  <div class="row">
+        <br>
+        <article class="col-md-11 col-md-offset-1">
+            
+
+<p><a href="http://en.wikipedia.org/wiki/Logistic_regression" title="logistic regression on wikipedia" target="_blank">Logistic Regression</a> is a statistical technique capable of predicting a binary outcome. It's a well-known strategy, widely used in disciplines ranging from <a href="http://drjasondavis.com/2012/04/08/lending-club-loan-analysis-making-money-with-logistic-regression/" title="logistic regression in finance and credit - LendingClub example" target="_blank">credit and finance</a> to <a href="http://weber.ucsd.edu/~hwhite/pub_files/hwcv-082.pdf" title="logistic regression in medicine">medicine</a> to <a href="http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0025768" title="logistic regression and violent recidivism" target="_blank">criminology</a> and other social sciences. Logistic regression is fairly intuitive and very effective; you're likely to find it among the first few chapters of a machine learning or <a href="http://www.amazon.com/Statistics-Nutshell-Desktop-Reference-OReilly/dp/0596510497/ref=sr_1_fkmr1_1?s=books&ie=UTF8&qid=1362356891&sr=1-1-fkmr1&keywords=logistic+regression+o%27reilly" title="statistics in a nutshell by sarah boslaugh on amazon" target="_blank">applied statistics book</a> and it's usage is covered by many <a href="http://cs229.stanford.edu/notes/cs229-notes1.pdf" target="_blank">stats courses</a>.</p>
+
+<p>It's not hard to find quality logistic regression examples using R. <a href="http://www.ats.ucla.edu/stat/r/dae/logit.htm" target="_blank">This tutorial</a>, for example, published by UCLA, is a great resource and one that I've consulted many times. Python is one of the most popular languages for machine learning, and while there are bountiful resources covering topics like <a href="http://www.yaksis.com/posts/why-use-svm.html" title="yaksis blog - why use support vector machines" target="_blank">Support Vector Machines</a> and <a href="http://www.slideshare.net/japerk/nltk-in-20-minutes" title="slideshare on text classification using nltk python library" target="_blank">text classification</a> using Python, there's far less material on logistic regression.</p>
+
+<p>This is a post about using logistic regression in Python.</p>
+
+<h3>Introduction</h3>
+<p>We'll use a few libraries in the code samples. Make sure you have these installed before you run through the code on your machine.</p>
+<ul>
+     <li><a href="http://www.numpy.org/" title="numpy scientific python package" target="_blank"><code>numpy</code></a>: a language extension that defines the numerical array and matrix</li>
+     <li><a href="http://pandas.pydata.org/" title="pandas" target="_blank"><code>pandas</code></a>: primary package to handle and operate directly on data.</li>
+     <li><a href="https://pypi.python.org/pypi/statsmodels" title="statsmodels.api python package" target="_blank"><code>statsmodels</code></a>: statistics &amp; econometrics package with useful tools for parameter estimation &amp; statistical testing</li>
+     <li><a href="http://matplotlib.org/" title="pylab - part of the matplotlib package" target="_blank"><code>pylab</code></a>: for generating plots</li>
+</ul>
+<p>Check out our post on <a href="http://blog.yhathq.com/posts/setting-up-scientific-python.html" target="_blank">Setting Up Scientific Python</a> if you're missing one or more of these.</p>
+
+<h3>Example Use Case for Logistic Regression</h3>
+
+<p>We'll be using the same dataset as UCLA's <a href="http://www.ats.ucla.edu/stat/r/dae/logit.htm" title="R Data Analysis Examples: Logit Regression" target="_blank">Logit Regression in R</a> tutorial to explore logistic regression in Python. Our goal will be to identify the various factors that may influence admission into graduate school.</p>
+
+
+<p>The dataset contains several columns which we can use as predictor variables: </p>
+<ul>
+<li><code>gpa</code></li>
+<li><code>gre</code> score</li>
+<li><code>rank</code> or prestige of an applicant's undergraduate alma mater</li>
+</ul>
+<p>The fourth column, <code>admit</code>, is our binary target variable. It indicates whether or not a candidate was admitted our not.</p>
+
+<h4>Load the data</h4>
+<p>Load the data using <code>pandas.read_csv</code>. We now have a <code>DataFrame</code> and can explore the data.</p>
+<script src="./ŷhat   Logistic Regression in Python_files/5074008.js"></script><link rel="stylesheet" href="https://gist-assets.github.com/assets/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist5074008" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-logistic_load_data-py-L1" rel="file-logistic_load_data-py-L1">1</span>
+            <span class="line-number" id="file-logistic_load_data-py-L2" rel="file-logistic_load_data-py-L2">2</span>
+            <span class="line-number" id="file-logistic_load_data-py-L3" rel="file-logistic_load_data-py-L3">3</span>
+            <span class="line-number" id="file-logistic_load_data-py-L4" rel="file-logistic_load_data-py-L4">4</span>
+            <span class="line-number" id="file-logistic_load_data-py-L5" rel="file-logistic_load_data-py-L5">5</span>
+            <span class="line-number" id="file-logistic_load_data-py-L6" rel="file-logistic_load_data-py-L6">6</span>
+            <span class="line-number" id="file-logistic_load_data-py-L7" rel="file-logistic_load_data-py-L7">7</span>
+            <span class="line-number" id="file-logistic_load_data-py-L8" rel="file-logistic_load_data-py-L8">8</span>
+            <span class="line-number" id="file-logistic_load_data-py-L9" rel="file-logistic_load_data-py-L9">9</span>
+            <span class="line-number" id="file-logistic_load_data-py-L10" rel="file-logistic_load_data-py-L10">10</span>
+            <span class="line-number" id="file-logistic_load_data-py-L11" rel="file-logistic_load_data-py-L11">11</span>
+            <span class="line-number" id="file-logistic_load_data-py-L12" rel="file-logistic_load_data-py-L12">12</span>
+            <span class="line-number" id="file-logistic_load_data-py-L13" rel="file-logistic_load_data-py-L13">13</span>
+            <span class="line-number" id="file-logistic_load_data-py-L14" rel="file-logistic_load_data-py-L14">14</span>
+            <span class="line-number" id="file-logistic_load_data-py-L15" rel="file-logistic_load_data-py-L15">15</span>
+            <span class="line-number" id="file-logistic_load_data-py-L16" rel="file-logistic_load_data-py-L16">16</span>
+            <span class="line-number" id="file-logistic_load_data-py-L17" rel="file-logistic_load_data-py-L17">17</span>
+            <span class="line-number" id="file-logistic_load_data-py-L18" rel="file-logistic_load_data-py-L18">18</span>
+            <span class="line-number" id="file-logistic_load_data-py-L19" rel="file-logistic_load_data-py-L19">19</span>
+            <span class="line-number" id="file-logistic_load_data-py-L20" rel="file-logistic_load_data-py-L20">20</span>
+            <span class="line-number" id="file-logistic_load_data-py-L21" rel="file-logistic_load_data-py-L21">21</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-logistic_load_data-py-LC1"><span class="pl-k">import</span> pandas <span class="pl-k">as</span> pd
+</div><div class="line" id="file-logistic_load_data-py-LC2"><span class="pl-k">import</span> statsmodels.api <span class="pl-k">as</span> sm
+</div><div class="line" id="file-logistic_load_data-py-LC3"><span class="pl-k">import</span> pylab <span class="pl-k">as</span> pl
+</div><div class="line" id="file-logistic_load_data-py-LC4"><span class="pl-k">import</span> numpy <span class="pl-k">as</span> np
+</div><div class="line" id="file-logistic_load_data-py-LC5">&nbsp;
+</div><div class="line" id="file-logistic_load_data-py-LC6"><span class="pl-c"># read the data in</span>
+</div><div class="line" id="file-logistic_load_data-py-LC7">df <span class="pl-k">=</span> pd.read_csv(<span class="pl-s1"><span class="pl-pds">"</span>http://www.ats.ucla.edu/stat/data/binary.csv<span class="pl-pds">"</span></span>)
+</div><div class="line" id="file-logistic_load_data-py-LC8">&nbsp;
+</div><div class="line" id="file-logistic_load_data-py-LC9"><span class="pl-c"># take a look at the dataset</span>
+</div><div class="line" id="file-logistic_load_data-py-LC10"><span class="pl-k">print</span> df.head()
+</div><div class="line" id="file-logistic_load_data-py-LC11"><span class="pl-c">#    admit  gre   gpa  rank</span>
+</div><div class="line" id="file-logistic_load_data-py-LC12"><span class="pl-c"># 0      0  380  3.61     3</span>
+</div><div class="line" id="file-logistic_load_data-py-LC13"><span class="pl-c"># 1      1  660  3.67     3</span>
+</div><div class="line" id="file-logistic_load_data-py-LC14"><span class="pl-c"># 2      1  800  4.00     1</span>
+</div><div class="line" id="file-logistic_load_data-py-LC15"><span class="pl-c"># 3      1  640  3.19     4</span>
+</div><div class="line" id="file-logistic_load_data-py-LC16"><span class="pl-c"># 4      0  520  2.93     4</span>
+</div><div class="line" id="file-logistic_load_data-py-LC17">&nbsp;
+</div><div class="line" id="file-logistic_load_data-py-LC18"><span class="pl-c"># rename the 'rank' column because there is also a DataFrame method called 'rank'</span>
+</div><div class="line" id="file-logistic_load_data-py-LC19">df.columns <span class="pl-k">=</span> [<span class="pl-s1"><span class="pl-pds">"</span>admit<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>gre<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>gpa<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">"</span>prestige<span class="pl-pds">"</span></span>]
+</div><div class="line" id="file-logistic_load_data-py-LC20"><span class="pl-k">print</span> df.columns
+</div><div class="line" id="file-logistic_load_data-py-LC21"><span class="pl-c"># array([admit, gre, gpa, prestige], dtype=object)</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/glamp/5074008/raw/logistic_load_data.py" style="float:right">view raw</a>
+            <a href="https://gist.github.com/glamp/5074008#file-logistic_load_data-py">logistic_load_data.py</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>Notice that one of the columns is called "<code>rank</code>." This presents a problem since <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.rank.html" target="_blank"><code>rank</code></a> is also the name of a method belonging to pandas <code>DataFrame</code> (<code>rank</code> calculates the ordered rank (1 through n) of a <code>DataFrame</code>/<code>Series</code>). To make things easier, I renamed the rank column to "prestige".</p>
+
+<h3>Summary Statistics &amp; Looking at the data</h3>
+<p>Now that we've got everything loaded into Python and named appropriately let's take a look at the data. We can use the <code>pandas</code> function <code>describe</code> to give us a summarized view of everything--<code>describe</code> is analogous to <code>summary</code> in R. There's also function for calculating the standard deviation, <code>std</code>. I've included it here to be consistent UCLA's tutorial, but the standard deviation is also included in <code>describe</code>.</p>
+
+<p>A feature I really like in <code>pandas</code> is the <code>pivot_table/crosstab</code> aggregations. <code>crosstab</code> makes it really easy to do multidimensional frequency tables (sort of like <code>table</code> in R). You might want to play around with this to look at different cuts of the data.</p>
+
+<script src="./ŷhat   Logistic Regression in Python_files/5074021.js"></script><link rel="stylesheet" href="https://gist-assets.github.com/assets/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist5074021" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L1" rel="file-logistic_looking_at_the_data-py-L1">1</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L2" rel="file-logistic_looking_at_the_data-py-L2">2</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L3" rel="file-logistic_looking_at_the_data-py-L3">3</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L4" rel="file-logistic_looking_at_the_data-py-L4">4</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L5" rel="file-logistic_looking_at_the_data-py-L5">5</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L6" rel="file-logistic_looking_at_the_data-py-L6">6</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L7" rel="file-logistic_looking_at_the_data-py-L7">7</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L8" rel="file-logistic_looking_at_the_data-py-L8">8</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L9" rel="file-logistic_looking_at_the_data-py-L9">9</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L10" rel="file-logistic_looking_at_the_data-py-L10">10</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L11" rel="file-logistic_looking_at_the_data-py-L11">11</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L12" rel="file-logistic_looking_at_the_data-py-L12">12</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L13" rel="file-logistic_looking_at_the_data-py-L13">13</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L14" rel="file-logistic_looking_at_the_data-py-L14">14</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L15" rel="file-logistic_looking_at_the_data-py-L15">15</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L16" rel="file-logistic_looking_at_the_data-py-L16">16</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L17" rel="file-logistic_looking_at_the_data-py-L17">17</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L18" rel="file-logistic_looking_at_the_data-py-L18">18</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L19" rel="file-logistic_looking_at_the_data-py-L19">19</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L20" rel="file-logistic_looking_at_the_data-py-L20">20</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L21" rel="file-logistic_looking_at_the_data-py-L21">21</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L22" rel="file-logistic_looking_at_the_data-py-L22">22</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L23" rel="file-logistic_looking_at_the_data-py-L23">23</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L24" rel="file-logistic_looking_at_the_data-py-L24">24</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L25" rel="file-logistic_looking_at_the_data-py-L25">25</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L26" rel="file-logistic_looking_at_the_data-py-L26">26</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L27" rel="file-logistic_looking_at_the_data-py-L27">27</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L28" rel="file-logistic_looking_at_the_data-py-L28">28</span>
+            <span class="line-number" id="file-logistic_looking_at_the_data-py-L29" rel="file-logistic_looking_at_the_data-py-L29">29</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-logistic_looking_at_the_data-py-LC1"><span class="pl-c"># summarize the data</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC2"><span class="pl-k">print</span> df.describe()
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC3"><span class="pl-c">#             admit         gre         gpa   prestige</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC4"><span class="pl-c"># count  400.000000  400.000000  400.000000  400.00000</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC5"><span class="pl-c"># mean     0.317500  587.700000    3.389900    2.48500</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC6"><span class="pl-c"># std      0.466087  115.516536    0.380567    0.94446</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC7"><span class="pl-c"># min      0.000000  220.000000    2.260000    1.00000</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC8"><span class="pl-c"># 25%      0.000000  520.000000    3.130000    2.00000</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC9"><span class="pl-c"># 50%      0.000000  580.000000    3.395000    2.00000</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC10"><span class="pl-c"># 75%      1.000000  660.000000    3.670000    3.00000</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC11"><span class="pl-c"># max      1.000000  800.000000    4.000000    4.00000</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC12">&nbsp;
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC13"><span class="pl-c"># take a look at the standard deviation of each column</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC14"><span class="pl-k">print</span> df.std()
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC15"><span class="pl-c"># admit      0.466087</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC16"><span class="pl-c"># gre      115.516536</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC17"><span class="pl-c"># gpa        0.380567</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC18"><span class="pl-c"># prestige   0.944460</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC19">&nbsp;
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC20"><span class="pl-c"># frequency table cutting presitge and whether or not someone was admitted</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC21"><span class="pl-k">print</span> pd.crosstab(df[<span class="pl-s1"><span class="pl-pds">'</span>admit<span class="pl-pds">'</span></span>], df[<span class="pl-s1"><span class="pl-pds">'</span>prestige<span class="pl-pds">'</span></span>], <span class="pl-vpf">rownames</span><span class="pl-k">=</span>[<span class="pl-s1"><span class="pl-pds">'</span>admit<span class="pl-pds">'</span></span>])
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC22"><span class="pl-c"># prestige   1   2   3   4</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC23"><span class="pl-c"># admit                   </span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC24"><span class="pl-c"># 0         28  97  93  55</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC25"><span class="pl-c"># 1         33  54  28  12</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC26">&nbsp;
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC27"><span class="pl-c"># plot all of the columns</span>
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC28">df.hist()
+</div><div class="line" id="file-logistic_looking_at_the_data-py-LC29">pl.show()
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/glamp/5074021/raw/logistic_looking_at_the_data.py" style="float:right">view raw</a>
+            <a href="https://gist.github.com/glamp/5074021#file-logistic_looking_at_the_data-py">logistic_looking_at_the_data.py</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+
+<p>Histograms are often one of the most helpful tools you can use during the exploratory phase of any data analysis project. They're normally pretty easy to plot, quick to interpret, and they give you a nice visual representation of your problem.</p>
+<img src="./ŷhat   Logistic Regression in Python_files/logit_hist.png" style="max-height: 500px;">
+
+<h3>dummy variables</h3>
+<p><code>pandas</code> gives you a great deal of control over how categorical variables are represented. We're going <a href="http://en.wikipedia.org/wiki/Dummy_variable_(statistics)" target="_blank">dummify</a> the "prestige" column using <code>get_dummies</code>.</p>
+
+<p><code>get_dummies</code> creates a new <code>DataFrame</code> with binary indicator variables for each category/option in the column specified. In this case, <code>prestige</code> has four levels: 1, 2, 3 and 4 (1 being most prestigious). When we call <code>get_dummies</code>, we get a dataframe with four columns, each of which describes one of those levels.</p>
+<script src="./ŷhat   Logistic Regression in Python_files/5074025.js"></script><link rel="stylesheet" href="https://gist-assets.github.com/assets/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist5074025" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-logistic_prepping-py-L1" rel="file-logistic_prepping-py-L1">1</span>
+            <span class="line-number" id="file-logistic_prepping-py-L2" rel="file-logistic_prepping-py-L2">2</span>
+            <span class="line-number" id="file-logistic_prepping-py-L3" rel="file-logistic_prepping-py-L3">3</span>
+            <span class="line-number" id="file-logistic_prepping-py-L4" rel="file-logistic_prepping-py-L4">4</span>
+            <span class="line-number" id="file-logistic_prepping-py-L5" rel="file-logistic_prepping-py-L5">5</span>
+            <span class="line-number" id="file-logistic_prepping-py-L6" rel="file-logistic_prepping-py-L6">6</span>
+            <span class="line-number" id="file-logistic_prepping-py-L7" rel="file-logistic_prepping-py-L7">7</span>
+            <span class="line-number" id="file-logistic_prepping-py-L8" rel="file-logistic_prepping-py-L8">8</span>
+            <span class="line-number" id="file-logistic_prepping-py-L9" rel="file-logistic_prepping-py-L9">9</span>
+            <span class="line-number" id="file-logistic_prepping-py-L10" rel="file-logistic_prepping-py-L10">10</span>
+            <span class="line-number" id="file-logistic_prepping-py-L11" rel="file-logistic_prepping-py-L11">11</span>
+            <span class="line-number" id="file-logistic_prepping-py-L12" rel="file-logistic_prepping-py-L12">12</span>
+            <span class="line-number" id="file-logistic_prepping-py-L13" rel="file-logistic_prepping-py-L13">13</span>
+            <span class="line-number" id="file-logistic_prepping-py-L14" rel="file-logistic_prepping-py-L14">14</span>
+            <span class="line-number" id="file-logistic_prepping-py-L15" rel="file-logistic_prepping-py-L15">15</span>
+            <span class="line-number" id="file-logistic_prepping-py-L16" rel="file-logistic_prepping-py-L16">16</span>
+            <span class="line-number" id="file-logistic_prepping-py-L17" rel="file-logistic_prepping-py-L17">17</span>
+            <span class="line-number" id="file-logistic_prepping-py-L18" rel="file-logistic_prepping-py-L18">18</span>
+            <span class="line-number" id="file-logistic_prepping-py-L19" rel="file-logistic_prepping-py-L19">19</span>
+            <span class="line-number" id="file-logistic_prepping-py-L20" rel="file-logistic_prepping-py-L20">20</span>
+            <span class="line-number" id="file-logistic_prepping-py-L21" rel="file-logistic_prepping-py-L21">21</span>
+            <span class="line-number" id="file-logistic_prepping-py-L22" rel="file-logistic_prepping-py-L22">22</span>
+            <span class="line-number" id="file-logistic_prepping-py-L23" rel="file-logistic_prepping-py-L23">23</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-logistic_prepping-py-LC1"><span class="pl-c"># dummify rank</span>
+</div><div class="line" id="file-logistic_prepping-py-LC2">dummy_ranks <span class="pl-k">=</span> pd.get_dummies(df[<span class="pl-s1"><span class="pl-pds">'</span>prestige<span class="pl-pds">'</span></span>], <span class="pl-vpf">prefix</span><span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">'</span>prestige<span class="pl-pds">'</span></span>)
+</div><div class="line" id="file-logistic_prepping-py-LC3"><span class="pl-k">print</span> dummy_ranks.head()
+</div><div class="line" id="file-logistic_prepping-py-LC4"><span class="pl-c">#    prestige_1  prestige_2  prestige_3  prestige_4</span>
+</div><div class="line" id="file-logistic_prepping-py-LC5"><span class="pl-c"># 0           0           0           1           0</span>
+</div><div class="line" id="file-logistic_prepping-py-LC6"><span class="pl-c"># 1           0           0           1           0</span>
+</div><div class="line" id="file-logistic_prepping-py-LC7"><span class="pl-c"># 2           1           0           0           0</span>
+</div><div class="line" id="file-logistic_prepping-py-LC8"><span class="pl-c"># 3           0           0           0           1</span>
+</div><div class="line" id="file-logistic_prepping-py-LC9"><span class="pl-c"># 4           0           0           0           1</span>
+</div><div class="line" id="file-logistic_prepping-py-LC10">&nbsp;
+</div><div class="line" id="file-logistic_prepping-py-LC11"><span class="pl-c"># create a clean data frame for the regression</span>
+</div><div class="line" id="file-logistic_prepping-py-LC12">cols_to_keep <span class="pl-k">=</span> [<span class="pl-s1"><span class="pl-pds">'</span>admit<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>gre<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>gpa<span class="pl-pds">'</span></span>]
+</div><div class="line" id="file-logistic_prepping-py-LC13">data <span class="pl-k">=</span> df[cols_to_keep].join(dummy_ranks.ix[:, <span class="pl-s1"><span class="pl-pds">'</span>prestige_2<span class="pl-pds">'</span></span>:])
+</div><div class="line" id="file-logistic_prepping-py-LC14"><span class="pl-k">print</span> data.head()
+</div><div class="line" id="file-logistic_prepping-py-LC15"><span class="pl-c">#    admit  gre   gpa  prestige_2  prestige_3  prestige_4</span>
+</div><div class="line" id="file-logistic_prepping-py-LC16"><span class="pl-c"># 0      0  380  3.61           0           1           0</span>
+</div><div class="line" id="file-logistic_prepping-py-LC17"><span class="pl-c"># 1      1  660  3.67           0           1           0</span>
+</div><div class="line" id="file-logistic_prepping-py-LC18"><span class="pl-c"># 2      1  800  4.00           0           0           0</span>
+</div><div class="line" id="file-logistic_prepping-py-LC19"><span class="pl-c"># 3      1  640  3.19           0           0           1</span>
+</div><div class="line" id="file-logistic_prepping-py-LC20"><span class="pl-c"># 4      0  520  2.93           0           0           1</span>
+</div><div class="line" id="file-logistic_prepping-py-LC21">&nbsp;
+</div><div class="line" id="file-logistic_prepping-py-LC22"><span class="pl-c"># manually add the intercept</span>
+</div><div class="line" id="file-logistic_prepping-py-LC23">data[<span class="pl-s1"><span class="pl-pds">'</span>intercept<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-c1">1.</span><span class="pl-c1">0</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/glamp/5074025/raw/logistic_prepping.py" style="float:right">view raw</a>
+            <a href="https://gist.github.com/glamp/5074025#file-logistic_prepping-py">logistic_prepping.py</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>Once that's done, we merge the new dummy columns into the original dataset and get rid of the <code>prestige</code> column which we no longer need.</p>
+
+<p>Lastly we're going to add a constant term for our Logistic Regression. The <code>statsmodels</code> function we're going to be using requires that intercepts/constants are specified explicitly.</p>
+
+<h3>Performing the regression</h3>
+<p>Actually doing the Logistic Regression is quite simple. Specify the column containing the variable you're trying to predict followed by the columns that the model should use to make the prediction.</p>
+
+<p>In our case we'll be predicting the <code>admit</code> column using <code>gre</code>, <code>gpa</code>, and the prestige dummy variables <code>prestige_2</code>, <code>prestige_3</code> and <code>prestige_4</code>. We're going to treat <code>prestige_1</code> as our baseline and exclude it from our fit. This is done to prevent <a href="http://en.wikipedia.org/wiki/Multicollinearity#Remedies_for_multicollinearity">multicollinearity</a>, or the <a href="http://en.wikipedia.org/wiki/Dummy_variable_(statistics)">dummy variable trap</a> caused by including a dummy variable for every single category.</p>
+
+<script src="./ŷhat   Logistic Regression in Python_files/5074027.js"></script><link rel="stylesheet" href="https://gist-assets.github.com/assets/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist5074027" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-logistic_do_regression-py-L1" rel="file-logistic_do_regression-py-L1">1</span>
+            <span class="line-number" id="file-logistic_do_regression-py-L2" rel="file-logistic_do_regression-py-L2">2</span>
+            <span class="line-number" id="file-logistic_do_regression-py-L3" rel="file-logistic_do_regression-py-L3">3</span>
+            <span class="line-number" id="file-logistic_do_regression-py-L4" rel="file-logistic_do_regression-py-L4">4</span>
+            <span class="line-number" id="file-logistic_do_regression-py-L5" rel="file-logistic_do_regression-py-L5">5</span>
+            <span class="line-number" id="file-logistic_do_regression-py-L6" rel="file-logistic_do_regression-py-L6">6</span>
+            <span class="line-number" id="file-logistic_do_regression-py-L7" rel="file-logistic_do_regression-py-L7">7</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-logistic_do_regression-py-LC1">train_cols <span class="pl-k">=</span> data.columns[<span class="pl-c1">1</span>:]
+</div><div class="line" id="file-logistic_do_regression-py-LC2"><span class="pl-c"># Index([gre, gpa, prestige_2, prestige_3, prestige_4], dtype=object)</span>
+</div><div class="line" id="file-logistic_do_regression-py-LC3">&nbsp;
+</div><div class="line" id="file-logistic_do_regression-py-LC4">logit <span class="pl-k">=</span> sm.Logit(data[<span class="pl-s1"><span class="pl-pds">'</span>admit<span class="pl-pds">'</span></span>], data[train_cols])
+</div><div class="line" id="file-logistic_do_regression-py-LC5">&nbsp;
+</div><div class="line" id="file-logistic_do_regression-py-LC6"><span class="pl-c"># fit the model</span>
+</div><div class="line" id="file-logistic_do_regression-py-LC7">result <span class="pl-k">=</span> logit.fit()
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/glamp/5074027/raw/logistic_do_regression.py" style="float:right">view raw</a>
+            <a href="https://gist.github.com/glamp/5074027#file-logistic_do_regression-py">logistic_do_regression.py</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+
+<p>Since we're doing a logistic regression, we're going to use the <code>statsmodels</code> <a href="http://en.wikipedia.org/wiki/Logit" title="logit on wikipedia" target="_blank">Logit</a> function. For details on other models available in <code>statsmodels</code>, check out their docs <a href="http://statsmodels.sourceforge.net/stable/index.html">here</a>.</p>
+
+<h3>Interpreting the results</h3>
+<p>One of my favorite parts about <code>statsmodels</code> is the summary output it gives. If you're coming from R, I think you'll like the output and find it very familiar too.</p>
+<script src="./ŷhat   Logistic Regression in Python_files/5074029.js"></script><link rel="stylesheet" href="https://gist-assets.github.com/assets/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist5074029" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-logistic_results-py-L1" rel="file-logistic_results-py-L1">1</span>
+            <span class="line-number" id="file-logistic_results-py-L2" rel="file-logistic_results-py-L2">2</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-logistic_results-py-LC1"><span class="pl-c"># cool enough to deserve it's own gist</span>
+</div><div class="line" id="file-logistic_results-py-LC2"><span class="pl-k">print</span> result.summary()
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/glamp/5074029/raw/logistic_results.py" style="float:right">view raw</a>
+            <a href="https://gist.github.com/glamp/5074029#file-logistic_results-py">logistic_results.py</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+
+<pre class="prettyprint prettyprinted"><span class="pln">                                     </span><span class="typ">Logit</span><span class="pln"> </span><span class="typ">Regression</span><span class="pln"> </span><span class="typ">Results</span><span class="pln">                           
+          </span><span class="pun">==============================================================================</span><span class="pln">
+          </span><span class="typ">Dep</span><span class="pun">.</span><span class="pln"> </span><span class="typ">Variable</span><span class="pun">:</span><span class="pln">                  admit   </span><span class="typ">No</span><span class="pun">.</span><span class="pln"> </span><span class="typ">Observations</span><span class="pun">:</span><span class="pln">                  </span><span class="lit">400</span><span class="pln">
+          </span><span class="typ">Model</span><span class="pun">:</span><span class="pln">                          </span><span class="typ">Logit</span><span class="pln">   </span><span class="typ">Df</span><span class="pln"> </span><span class="typ">Residuals</span><span class="pun">:</span><span class="pln">                      </span><span class="lit">394</span><span class="pln">
+          </span><span class="typ">Method</span><span class="pun">:</span><span class="pln">                           MLE   </span><span class="typ">Df</span><span class="pln"> </span><span class="typ">Model</span><span class="pun">:</span><span class="pln">                            </span><span class="lit">5</span><span class="pln">
+          </span><span class="typ">Date</span><span class="pun">:</span><span class="pln">                </span><span class="typ">Sun</span><span class="pun">,</span><span class="pln"> </span><span class="lit">03</span><span class="pln"> </span><span class="typ">Mar</span><span class="pln"> </span><span class="lit">2013</span><span class="pln">   </span><span class="typ">Pseudo</span><span class="pln"> R</span><span class="pun">-</span><span class="pln">squ</span><span class="pun">.:</span><span class="pln">                 </span><span class="lit">0.08292</span><span class="pln">
+          </span><span class="typ">Time</span><span class="pun">:</span><span class="pln">                        </span><span class="lit">12</span><span class="pun">:</span><span class="lit">34</span><span class="pun">:</span><span class="lit">59</span><span class="pln">   </span><span class="typ">Log</span><span class="pun">-</span><span class="typ">Likelihood</span><span class="pun">:</span><span class="pln">                </span><span class="pun">-</span><span class="lit">229.26</span><span class="pln">
+          converged</span><span class="pun">:</span><span class="pln">                       </span><span class="kwd">True</span><span class="pln">   LL</span><span class="pun">-</span><span class="typ">Null</span><span class="pun">:</span><span class="pln">                       </span><span class="pun">-</span><span class="lit">249.99</span><span class="pln">
+                                                  LLR p</span><span class="pun">-</span><span class="pln">value</span><span class="pun">:</span><span class="pln">                 </span><span class="lit">7.578e-08</span><span class="pln">
+          </span><span class="pun">==============================================================================</span><span class="pln">
+                           coef    std err          z      P</span><span class="pun">&gt;|</span><span class="pln">z</span><span class="pun">|</span><span class="pln">      </span><span class="pun">[</span><span class="lit">95.0</span><span class="pun">%</span><span class="pln"> </span><span class="typ">Conf</span><span class="pun">.</span><span class="pln"> </span><span class="typ">Int</span><span class="pun">.]</span><span class="pln">
+          </span><span class="pun">------------------------------------------------------------------------------</span><span class="pln">
+          gre            </span><span class="lit">0.0023</span><span class="pln">      </span><span class="lit">0.001</span><span class="pln">      </span><span class="lit">2.070</span><span class="pln">      </span><span class="lit">0.038</span><span class="pln">         </span><span class="lit">0.000</span><span class="pln">     </span><span class="lit">0.004</span><span class="pln">
+          gpa            </span><span class="lit">0.8040</span><span class="pln">      </span><span class="lit">0.332</span><span class="pln">      </span><span class="lit">2.423</span><span class="pln">      </span><span class="lit">0.015</span><span class="pln">         </span><span class="lit">0.154</span><span class="pln">     </span><span class="lit">1.454</span><span class="pln">
+          prestige_2    </span><span class="pun">-</span><span class="lit">0.6754</span><span class="pln">      </span><span class="lit">0.316</span><span class="pln">     </span><span class="pun">-</span><span class="lit">2.134</span><span class="pln">      </span><span class="lit">0.033</span><span class="pln">        </span><span class="pun">-</span><span class="lit">1.296</span><span class="pln">    </span><span class="pun">-</span><span class="lit">0.055</span><span class="pln">
+          prestige_3    </span><span class="pun">-</span><span class="lit">1.3402</span><span class="pln">      </span><span class="lit">0.345</span><span class="pln">     </span><span class="pun">-</span><span class="lit">3.881</span><span class="pln">      </span><span class="lit">0.000</span><span class="pln">        </span><span class="pun">-</span><span class="lit">2.017</span><span class="pln">    </span><span class="pun">-</span><span class="lit">0.663</span><span class="pln">
+          prestige_4    </span><span class="pun">-</span><span class="lit">1.5515</span><span class="pln">      </span><span class="lit">0.418</span><span class="pln">     </span><span class="pun">-</span><span class="lit">3.713</span><span class="pln">      </span><span class="lit">0.000</span><span class="pln">        </span><span class="pun">-</span><span class="lit">2.370</span><span class="pln">    </span><span class="pun">-</span><span class="lit">0.733</span><span class="pln">
+          intercept     </span><span class="pun">-</span><span class="lit">3.9900</span><span class="pln">      </span><span class="lit">1.140</span><span class="pln">     </span><span class="pun">-</span><span class="lit">3.500</span><span class="pln">      </span><span class="lit">0.000</span><span class="pln">        </span><span class="pun">-</span><span class="lit">6.224</span><span class="pln">    </span><span class="pun">-</span><span class="lit">1.756</span><span class="pln">
+          </span><span class="pun">==============================================================================</span></pre>
+
+<p>You get a great overview of the coefficients of the model, how well those coefficients fit, the overall fit quality, and several other statistical measures.</p>
+
+<p>The result object also lets you to isolate and inspect parts of the model output. The confidence interval gives you an idea for how robust the coefficients of the model are. </p>
+<script src="./ŷhat   Logistic Regression in Python_files/5074033.js"></script><link rel="stylesheet" href="https://gist-assets.github.com/assets/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist5074033" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-logistic_conf_int-py-L1" rel="file-logistic_conf_int-py-L1">1</span>
+            <span class="line-number" id="file-logistic_conf_int-py-L2" rel="file-logistic_conf_int-py-L2">2</span>
+            <span class="line-number" id="file-logistic_conf_int-py-L3" rel="file-logistic_conf_int-py-L3">3</span>
+            <span class="line-number" id="file-logistic_conf_int-py-L4" rel="file-logistic_conf_int-py-L4">4</span>
+            <span class="line-number" id="file-logistic_conf_int-py-L5" rel="file-logistic_conf_int-py-L5">5</span>
+            <span class="line-number" id="file-logistic_conf_int-py-L6" rel="file-logistic_conf_int-py-L6">6</span>
+            <span class="line-number" id="file-logistic_conf_int-py-L7" rel="file-logistic_conf_int-py-L7">7</span>
+            <span class="line-number" id="file-logistic_conf_int-py-L8" rel="file-logistic_conf_int-py-L8">8</span>
+            <span class="line-number" id="file-logistic_conf_int-py-L9" rel="file-logistic_conf_int-py-L9">9</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-logistic_conf_int-py-LC1"><span class="pl-c"># look at the confidence interval of each coeffecient</span>
+</div><div class="line" id="file-logistic_conf_int-py-LC2"><span class="pl-k">print</span> result.conf_int()
+</div><div class="line" id="file-logistic_conf_int-py-LC3"><span class="pl-c">#                    0         1</span>
+</div><div class="line" id="file-logistic_conf_int-py-LC4"><span class="pl-c"># gre         0.000120  0.004409</span>
+</div><div class="line" id="file-logistic_conf_int-py-LC5"><span class="pl-c"># gpa         0.153684  1.454391</span>
+</div><div class="line" id="file-logistic_conf_int-py-LC6"><span class="pl-c"># prestige_2 -1.295751 -0.055135</span>
+</div><div class="line" id="file-logistic_conf_int-py-LC7"><span class="pl-c"># prestige_3 -2.016992 -0.663416</span>
+</div><div class="line" id="file-logistic_conf_int-py-LC8"><span class="pl-c"># prestige_4 -2.370399 -0.732529</span>
+</div><div class="line" id="file-logistic_conf_int-py-LC9"><span class="pl-c"># intercept  -6.224242 -1.755716</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/glamp/5074033/raw/logistic_conf_int.py" style="float:right">view raw</a>
+            <a href="https://gist.github.com/glamp/5074033#file-logistic_conf_int-py">logistic_conf_int.py</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>In this example, we're very confident that there is an inverse relationship between the probability of being admitted and the prestige of a candidate's undergraduate school.</p>
+
+<p>In other words, the probability of being accepted into a graduate program is higher for students who attended a top ranked undergraduate college (<code>prestige_1==True</code>) as opposed to a lower ranked school with, say, <code>prestige_4==True</code> (remember, a prestige of 1 is the <em>most prestigious</em> and a prestige of 4 is the <em>least prestigious</em>.</p>
+
+<h3>odds ratio</h3>
+<p>Take the exponential of each of the coefficients to generate the odds ratios. This tells you how a 1 unit increase or decrease in a variable affects the odds of being admitted. For example, we can expect the odds of being admitted to decrease by about 50% if the prestige of a school is 2. UCLA gives a more in depth explanation of the odds ratio <a href="http://www.ats.ucla.edu/stat/mult_pkg/faq/general/odds_ratio.htm">here</a>.</p>
+
+<script src="./ŷhat   Logistic Regression in Python_files/5074041.js"></script><link rel="stylesheet" href="https://gist-assets.github.com/assets/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist5074041" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-logistic_odds_ratio-py-L1" rel="file-logistic_odds_ratio-py-L1">1</span>
+            <span class="line-number" id="file-logistic_odds_ratio-py-L2" rel="file-logistic_odds_ratio-py-L2">2</span>
+            <span class="line-number" id="file-logistic_odds_ratio-py-L3" rel="file-logistic_odds_ratio-py-L3">3</span>
+            <span class="line-number" id="file-logistic_odds_ratio-py-L4" rel="file-logistic_odds_ratio-py-L4">4</span>
+            <span class="line-number" id="file-logistic_odds_ratio-py-L5" rel="file-logistic_odds_ratio-py-L5">5</span>
+            <span class="line-number" id="file-logistic_odds_ratio-py-L6" rel="file-logistic_odds_ratio-py-L6">6</span>
+            <span class="line-number" id="file-logistic_odds_ratio-py-L7" rel="file-logistic_odds_ratio-py-L7">7</span>
+            <span class="line-number" id="file-logistic_odds_ratio-py-L8" rel="file-logistic_odds_ratio-py-L8">8</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-logistic_odds_ratio-py-LC1"><span class="pl-c"># odds ratios only</span>
+</div><div class="line" id="file-logistic_odds_ratio-py-LC2"><span class="pl-k">print</span> np.exp(result.params)
+</div><div class="line" id="file-logistic_odds_ratio-py-LC3"><span class="pl-c"># gre           1.002267</span>
+</div><div class="line" id="file-logistic_odds_ratio-py-LC4"><span class="pl-c"># gpa           2.234545</span>
+</div><div class="line" id="file-logistic_odds_ratio-py-LC5"><span class="pl-c"># prestige_2    0.508931</span>
+</div><div class="line" id="file-logistic_odds_ratio-py-LC6"><span class="pl-c"># prestige_3    0.261792</span>
+</div><div class="line" id="file-logistic_odds_ratio-py-LC7"><span class="pl-c"># prestige_4    0.211938</span>
+</div><div class="line" id="file-logistic_odds_ratio-py-LC8"><span class="pl-c"># intercept     0.018500</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/glamp/5074041/raw/logistic_odds_ratio.py" style="float:right">view raw</a>
+            <a href="https://gist.github.com/glamp/5074041#file-logistic_odds_ratio-py">logistic_odds_ratio.py</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>We can also do the same calculations using the coefficients estimated using the confidence interval to get a better picture for how uncertainty in variables can impact the admission rate.</p>
+<script src="./ŷhat   Logistic Regression in Python_files/5074043.js"></script><link rel="stylesheet" href="https://gist-assets.github.com/assets/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist5074043" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-logistic_ci_and_est-py-L1" rel="file-logistic_ci_and_est-py-L1">1</span>
+            <span class="line-number" id="file-logistic_ci_and_est-py-L2" rel="file-logistic_ci_and_est-py-L2">2</span>
+            <span class="line-number" id="file-logistic_ci_and_est-py-L3" rel="file-logistic_ci_and_est-py-L3">3</span>
+            <span class="line-number" id="file-logistic_ci_and_est-py-L4" rel="file-logistic_ci_and_est-py-L4">4</span>
+            <span class="line-number" id="file-logistic_ci_and_est-py-L5" rel="file-logistic_ci_and_est-py-L5">5</span>
+            <span class="line-number" id="file-logistic_ci_and_est-py-L6" rel="file-logistic_ci_and_est-py-L6">6</span>
+            <span class="line-number" id="file-logistic_ci_and_est-py-L7" rel="file-logistic_ci_and_est-py-L7">7</span>
+            <span class="line-number" id="file-logistic_ci_and_est-py-L8" rel="file-logistic_ci_and_est-py-L8">8</span>
+            <span class="line-number" id="file-logistic_ci_and_est-py-L9" rel="file-logistic_ci_and_est-py-L9">9</span>
+            <span class="line-number" id="file-logistic_ci_and_est-py-L10" rel="file-logistic_ci_and_est-py-L10">10</span>
+            <span class="line-number" id="file-logistic_ci_and_est-py-L11" rel="file-logistic_ci_and_est-py-L11">11</span>
+            <span class="line-number" id="file-logistic_ci_and_est-py-L12" rel="file-logistic_ci_and_est-py-L12">12</span>
+            <span class="line-number" id="file-logistic_ci_and_est-py-L13" rel="file-logistic_ci_and_est-py-L13">13</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-logistic_ci_and_est-py-LC1"><span class="pl-c"># odds ratios and 95% CI</span>
+</div><div class="line" id="file-logistic_ci_and_est-py-LC2">params <span class="pl-k">=</span> result.params
+</div><div class="line" id="file-logistic_ci_and_est-py-LC3">conf <span class="pl-k">=</span> result.conf_int()
+</div><div class="line" id="file-logistic_ci_and_est-py-LC4">conf[<span class="pl-s1"><span class="pl-pds">'</span>OR<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> params
+</div><div class="line" id="file-logistic_ci_and_est-py-LC5">conf.columns <span class="pl-k">=</span> [<span class="pl-s1"><span class="pl-pds">'</span>2.5%<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>97.5%<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>OR<span class="pl-pds">'</span></span>]
+</div><div class="line" id="file-logistic_ci_and_est-py-LC6"><span class="pl-k">print</span> np.exp(conf)
+</div><div class="line" id="file-logistic_ci_and_est-py-LC7"><span class="pl-c">#                   2.5%     97.5%        OR</span>
+</div><div class="line" id="file-logistic_ci_and_est-py-LC8"><span class="pl-c"># gre           1.000120  1.004418  1.002267</span>
+</div><div class="line" id="file-logistic_ci_and_est-py-LC9"><span class="pl-c"># gpa           1.166122  4.281877  2.234545</span>
+</div><div class="line" id="file-logistic_ci_and_est-py-LC10"><span class="pl-c"># prestige_2    0.273692  0.946358  0.508931</span>
+</div><div class="line" id="file-logistic_ci_and_est-py-LC11"><span class="pl-c"># prestige_3    0.133055  0.515089  0.261792</span>
+</div><div class="line" id="file-logistic_ci_and_est-py-LC12"><span class="pl-c"># prestige_4    0.093443  0.480692  0.211938</span>
+</div><div class="line" id="file-logistic_ci_and_est-py-LC13"><span class="pl-c"># intercept     0.001981  0.172783  0.018500</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/glamp/5074043/raw/logistic_ci_and_est.py" style="float:right">view raw</a>
+            <a href="https://gist.github.com/glamp/5074043#file-logistic_ci_and_est-py">logistic_ci_and_est.py</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+
+<h3>Digging a little deeper</h3>
+<p>As a way of evaluating our classifier, we're going to recreate the dataset with every logical combination of input values. This will allow us to see how the predicted probability of admission increases/decreases across different variables. First we're going to generate the combinations using a helper function called <a href="https://gist.github.com/glamp/5077283"><code>cartesian</code></a> which I originally found <a href="http://stackoverflow.com/questions/1208118/using-numpy-to-build-an-array-of-all-combinations-of-two-arrays">here</a>.</p>
+
+<p>We're going to use <code>np.linspace</code> to create a range of values for "gre" and "gpa". This creates a range of linearly spaced values from a specified min and maximum value--in our case just the min/max observed values.</p>
+
+<script src="./ŷhat   Logistic Regression in Python_files/5074046.js"></script><link rel="stylesheet" href="https://gist-assets.github.com/assets/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist5074046" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-logistic_cartesian-py-L1" rel="file-logistic_cartesian-py-L1">1</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L2" rel="file-logistic_cartesian-py-L2">2</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L3" rel="file-logistic_cartesian-py-L3">3</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L4" rel="file-logistic_cartesian-py-L4">4</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L5" rel="file-logistic_cartesian-py-L5">5</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L6" rel="file-logistic_cartesian-py-L6">6</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L7" rel="file-logistic_cartesian-py-L7">7</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L8" rel="file-logistic_cartesian-py-L8">8</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L9" rel="file-logistic_cartesian-py-L9">9</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L10" rel="file-logistic_cartesian-py-L10">10</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L11" rel="file-logistic_cartesian-py-L11">11</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L12" rel="file-logistic_cartesian-py-L12">12</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L13" rel="file-logistic_cartesian-py-L13">13</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L14" rel="file-logistic_cartesian-py-L14">14</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L15" rel="file-logistic_cartesian-py-L15">15</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L16" rel="file-logistic_cartesian-py-L16">16</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L17" rel="file-logistic_cartesian-py-L17">17</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L18" rel="file-logistic_cartesian-py-L18">18</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L19" rel="file-logistic_cartesian-py-L19">19</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L20" rel="file-logistic_cartesian-py-L20">20</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L21" rel="file-logistic_cartesian-py-L21">21</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L22" rel="file-logistic_cartesian-py-L22">22</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L23" rel="file-logistic_cartesian-py-L23">23</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L24" rel="file-logistic_cartesian-py-L24">24</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L25" rel="file-logistic_cartesian-py-L25">25</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L26" rel="file-logistic_cartesian-py-L26">26</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L27" rel="file-logistic_cartesian-py-L27">27</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L28" rel="file-logistic_cartesian-py-L28">28</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L29" rel="file-logistic_cartesian-py-L29">29</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L30" rel="file-logistic_cartesian-py-L30">30</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L31" rel="file-logistic_cartesian-py-L31">31</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L32" rel="file-logistic_cartesian-py-L32">32</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L33" rel="file-logistic_cartesian-py-L33">33</span>
+            <span class="line-number" id="file-logistic_cartesian-py-L34" rel="file-logistic_cartesian-py-L34">34</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-logistic_cartesian-py-LC1"><span class="pl-c"># instead of generating all possible values of GRE and GPA, we're going</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC2"><span class="pl-c"># to use an evenly spaced range of 10 values from the min to the max </span>
+</div><div class="line" id="file-logistic_cartesian-py-LC3">gres <span class="pl-k">=</span> np.linspace(data[<span class="pl-s1"><span class="pl-pds">'</span>gre<span class="pl-pds">'</span></span>].min(), data[<span class="pl-s1"><span class="pl-pds">'</span>gre<span class="pl-pds">'</span></span>].max(), <span class="pl-c1">10</span>)
+</div><div class="line" id="file-logistic_cartesian-py-LC4"><span class="pl-k">print</span> gres
+</div><div class="line" id="file-logistic_cartesian-py-LC5"><span class="pl-c"># array([ 220.        ,  284.44444444,  348.88888889,  413.33333333,</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC6"><span class="pl-c">#         477.77777778,  542.22222222,  606.66666667,  671.11111111,</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC7"><span class="pl-c">#         735.55555556,  800.        ])</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC8">gpas <span class="pl-k">=</span> np.linspace(data[<span class="pl-s1"><span class="pl-pds">'</span>gpa<span class="pl-pds">'</span></span>].min(), data[<span class="pl-s1"><span class="pl-pds">'</span>gpa<span class="pl-pds">'</span></span>].max(), <span class="pl-c1">10</span>)
+</div><div class="line" id="file-logistic_cartesian-py-LC9"><span class="pl-k">print</span> gpas
+</div><div class="line" id="file-logistic_cartesian-py-LC10"><span class="pl-c"># array([ 2.26      ,  2.45333333,  2.64666667,  2.84      ,  3.03333333,</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC11"><span class="pl-c">#         3.22666667,  3.42      ,  3.61333333,  3.80666667,  4.        ])</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC12">&nbsp;
+</div><div class="line" id="file-logistic_cartesian-py-LC13">&nbsp;
+</div><div class="line" id="file-logistic_cartesian-py-LC14"><span class="pl-c"># enumerate all possibilities</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC15">combos <span class="pl-k">=</span> pd.DataFrame(cartesian([gres, gpas, [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">1.</span>]]))
+</div><div class="line" id="file-logistic_cartesian-py-LC16"><span class="pl-c"># recreate the dummy variables</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC17">combos.columns <span class="pl-k">=</span> [<span class="pl-s1"><span class="pl-pds">'</span>gre<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>gpa<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>prestige<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>intercept<span class="pl-pds">'</span></span>]
+</div><div class="line" id="file-logistic_cartesian-py-LC18">dummy_ranks <span class="pl-k">=</span> pd.get_dummies(combos[<span class="pl-s1"><span class="pl-pds">'</span>prestige<span class="pl-pds">'</span></span>], <span class="pl-vpf">prefix</span><span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">'</span>prestige<span class="pl-pds">'</span></span>)
+</div><div class="line" id="file-logistic_cartesian-py-LC19">dummy_ranks.columns <span class="pl-k">=</span> [<span class="pl-s1"><span class="pl-pds">'</span>prestige_1<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>prestige_2<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>prestige_3<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>prestige_4<span class="pl-pds">'</span></span>]
+</div><div class="line" id="file-logistic_cartesian-py-LC20">&nbsp;
+</div><div class="line" id="file-logistic_cartesian-py-LC21"><span class="pl-c"># keep only what we need for making predictions</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC22">cols_to_keep <span class="pl-k">=</span> [<span class="pl-s1"><span class="pl-pds">'</span>gre<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>gpa<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>prestige<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>intercept<span class="pl-pds">'</span></span>]
+</div><div class="line" id="file-logistic_cartesian-py-LC23">combos <span class="pl-k">=</span> combos[cols_to_keep].join(dummy_ranks.ix[:, <span class="pl-s1"><span class="pl-pds">'</span>prestige_2<span class="pl-pds">'</span></span>:])
+</div><div class="line" id="file-logistic_cartesian-py-LC24">&nbsp;
+</div><div class="line" id="file-logistic_cartesian-py-LC25"><span class="pl-c"># make predictions on the enumerated dataset</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC26">combos[<span class="pl-s1"><span class="pl-pds">'</span>admit_pred<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> result.predict(combos[train_cols])
+</div><div class="line" id="file-logistic_cartesian-py-LC27">&nbsp;
+</div><div class="line" id="file-logistic_cartesian-py-LC28"><span class="pl-k">print</span> combos.head()
+</div><div class="line" id="file-logistic_cartesian-py-LC29"><span class="pl-c">#    gre       gpa  prestige  intercept  prestige_2  prestige_3  prestige_4  admit_pred</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC30"><span class="pl-c"># 0  220  2.260000         1          1           0           0           0    0.157801</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC31"><span class="pl-c"># 1  220  2.260000         2          1           1           0           0    0.087056</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC32"><span class="pl-c"># 2  220  2.260000         3          1           0           1           0    0.046758</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC33"><span class="pl-c"># 3  220  2.260000         4          1           0           0           1    0.038194</span>
+</div><div class="line" id="file-logistic_cartesian-py-LC34"><span class="pl-c"># 4  220  2.453333         1          1           0           0           0    0.179574</span>
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/glamp/5074046/raw/logistic_cartesian.py" style="float:right">view raw</a>
+            <a href="https://gist.github.com/glamp/5074046#file-logistic_cartesian-py">logistic_cartesian.py</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+
+<p>Now that we've generated our predictions, let's make some plots to visualize the results. I created a small helper function called <code>isolate_and_plot</code> which allows you to compare a given variable with the different prestige levels and the mean probability for that combination. To isolate prestige and the other variable I used a <code>pivot_table</code> which allows you to easily aggregate the data.</p>
+<script src="./ŷhat   Logistic Regression in Python_files/5077306.js"></script><link rel="stylesheet" href="https://gist-assets.github.com/assets/embed-8bf0013c72fb64f0bb1bc1872b43e39e.css"><div id="gist5077306" class="gist">
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+
+
+
+    <div class="file-data">
+      <table cellpadding="0" cellspacing="0" class="lines highlight">
+        <tbody><tr>
+          <td class="line-numbers">
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L1" rel="file-logistic_isolate_and_plot-py-L1">1</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L2" rel="file-logistic_isolate_and_plot-py-L2">2</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L3" rel="file-logistic_isolate_and_plot-py-L3">3</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L4" rel="file-logistic_isolate_and_plot-py-L4">4</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L5" rel="file-logistic_isolate_and_plot-py-L5">5</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L6" rel="file-logistic_isolate_and_plot-py-L6">6</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L7" rel="file-logistic_isolate_and_plot-py-L7">7</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L8" rel="file-logistic_isolate_and_plot-py-L8">8</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L9" rel="file-logistic_isolate_and_plot-py-L9">9</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L10" rel="file-logistic_isolate_and_plot-py-L10">10</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L11" rel="file-logistic_isolate_and_plot-py-L11">11</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L12" rel="file-logistic_isolate_and_plot-py-L12">12</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L13" rel="file-logistic_isolate_and_plot-py-L13">13</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L14" rel="file-logistic_isolate_and_plot-py-L14">14</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L15" rel="file-logistic_isolate_and_plot-py-L15">15</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L16" rel="file-logistic_isolate_and_plot-py-L16">16</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L17" rel="file-logistic_isolate_and_plot-py-L17">17</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L18" rel="file-logistic_isolate_and_plot-py-L18">18</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L19" rel="file-logistic_isolate_and_plot-py-L19">19</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L20" rel="file-logistic_isolate_and_plot-py-L20">20</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L21" rel="file-logistic_isolate_and_plot-py-L21">21</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L22" rel="file-logistic_isolate_and_plot-py-L22">22</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L23" rel="file-logistic_isolate_and_plot-py-L23">23</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L24" rel="file-logistic_isolate_and_plot-py-L24">24</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L25" rel="file-logistic_isolate_and_plot-py-L25">25</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L26" rel="file-logistic_isolate_and_plot-py-L26">26</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L27" rel="file-logistic_isolate_and_plot-py-L27">27</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L28" rel="file-logistic_isolate_and_plot-py-L28">28</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L29" rel="file-logistic_isolate_and_plot-py-L29">29</span>
+            <span class="line-number" id="file-logistic_isolate_and_plot-py-L30" rel="file-logistic_isolate_and_plot-py-L30">30</span>
+          </td>
+          <td class="line-data">
+            <pre class="line-pre"><div class="line" id="file-logistic_isolate_and_plot-py-LC1"><span class="pl-st">def</span> <span class="pl-en">isolate_and_plot</span>(<span class="pl-vpf">variable</span>):
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC2">    <span class="pl-c"># isolate gre and class rank</span>
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC3">    grouped <span class="pl-k">=</span> pd.pivot_table(combos, <span class="pl-vpf">values</span><span class="pl-k">=</span>[<span class="pl-s1"><span class="pl-pds">'</span>admit_pred<span class="pl-pds">'</span></span>], <span class="pl-vpf">rows</span><span class="pl-k">=</span>[variable, <span class="pl-s1"><span class="pl-pds">'</span>prestige<span class="pl-pds">'</span></span>],
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC4">                             <span class="pl-vpf">aggfunc</span><span class="pl-k">=</span>np.mean)
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC5">    
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC6">    <span class="pl-c"># in case you're curious as to what this looks like</span>
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC7">    <span class="pl-c"># print grouped.head()</span>
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC8">    <span class="pl-c">#                      admit_pred</span>
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC9">    <span class="pl-c"># gre        prestige            </span>
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC10">    <span class="pl-c"># 220.000000 1           0.282462</span>
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC11">    <span class="pl-c">#            2           0.169987</span>
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC12">    <span class="pl-c">#            3           0.096544</span>
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC13">    <span class="pl-c">#            4           0.079859</span>
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC14">    <span class="pl-c"># 284.444444 1           0.311718</span>
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC15">    
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC16">    <span class="pl-c"># make a plot</span>
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC17">    colors <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">'</span>rbgyrbgy<span class="pl-pds">'</span></span>
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC18">    <span class="pl-k">for</span> col <span class="pl-k">in</span> combos.prestige.unique():
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC19">        plt_data <span class="pl-k">=</span> grouped.ix[grouped.index.get_level_values(<span class="pl-c1">1</span>)<span class="pl-k">==</span>col]
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC20">        pl.plot(plt_data.index.get_level_values(<span class="pl-c1">0</span>), plt_data[<span class="pl-s1"><span class="pl-pds">'</span>admit_pred<span class="pl-pds">'</span></span>],
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC21">                <span class="pl-vpf">color</span><span class="pl-k">=</span>colors[<span class="pl-s3">int</span>(col)])
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC22">&nbsp;
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC23">    pl.xlabel(variable)
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC24">    pl.ylabel(<span class="pl-s1"><span class="pl-pds">"</span>P(admit=1)<span class="pl-pds">"</span></span>)
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC25">    pl.legend([<span class="pl-s1"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>2<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>3<span class="pl-pds">'</span></span>, <span class="pl-s1"><span class="pl-pds">'</span>4<span class="pl-pds">'</span></span>], <span class="pl-vpf">loc</span><span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">'</span>upper left<span class="pl-pds">'</span></span>, <span class="pl-vpf">title</span><span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">'</span>Prestige<span class="pl-pds">'</span></span>)
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC26">    pl.title(<span class="pl-s1"><span class="pl-pds">"</span>Prob(admit=1) isolating <span class="pl-pds">"</span></span> <span class="pl-k">+</span> variable <span class="pl-k">+</span> <span class="pl-s1"><span class="pl-pds">"</span> and presitge<span class="pl-pds">"</span></span>)
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC27">    pl.show()
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC28">&nbsp;
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC29">isolate_and_plot(<span class="pl-s1"><span class="pl-pds">'</span>gre<span class="pl-pds">'</span></span>)
+</div><div class="line" id="file-logistic_isolate_and_plot-py-LC30">isolate_and_plot(<span class="pl-s1"><span class="pl-pds">'</span>gpa<span class="pl-pds">'</span></span>)
+</div></pre>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+          </div>
+          <div class="gist-meta">
+            <a href="https://gist.github.com/glamp/5077306/raw/logistic_isolate_and_plot.py" style="float:right">view raw</a>
+            <a href="https://gist.github.com/glamp/5077306#file-logistic_isolate_and_plot-py">logistic_isolate_and_plot.py</a>
+            hosted with ❤ by <a href="https://github.com/">GitHub</a>
+          </div>
+        </div>
+</div>
+
+<p>The resulting plots shows how gre, gpa, and prestige affect the admission levels. You can see how the probability of admission gradually increases as gre and gpa increase and that the different prestige levels yield drastic probabilities of admission (particularly the most/least prestigious schools).</p>
+
+<img src="./ŷhat   Logistic Regression in Python_files/isolated_rank_and_gre.png" style="max-height: 335px;">
+<img src="./ŷhat   Logistic Regression in Python_files/isolated_rank_and_gpa.png" style="max-height: 335px;">
+
+<h3>Takeaways</h3>
+<p>Logistic Regression is an excellent algorithm for classification. Even though some of the sexier, black box classification algorithms like SVM and RandomForest can perform better in some cases, it's hard to deny the value in knowing exactly what your model is doing. Often times you can get by using RandomForest to select the features of your model and then rebuild the model with Logistic Regression using the best features.</p>
+
+<h3>Other resources</h3>
+<ul>
+	<li><a href="http://www.ats.ucla.edu/stat/r/dae/logit.htm">UCLA Tutorial in R</a></li>
+	<li><a href="http://scikit-learn.org/stable/modules/linear_model.html#logistic-regression">scikit-learn docs</a></li>
+	<li><a href="http://blog.smellthedata.com/2009/06/python-logistic-regression-with-l2.html">Pure Python implementation</a></li>
+	<li><a href="http://www.vassarstats.net/logreg1.html">Basic examples w/ interactive tutorial</a></li>
+</ul>
+
+
+
+
+        </article>
+    </div>
+</div>
+<br>
+<section class="pagination center-text top">
+    <div class="container">
+        <a href="http://blog.yhathq.com/">Back to blog</a>
+    </div>
+</section>
+
+
+        </div>
+
+        <footer>
+    <div class="container">
+        <div class="row">
+            <nav class="contact-links col-sm-2">
+                <h4>Contact Us</h4>
+                <a href="mailto:info@yhathq.com" target="_blank">info@yhathq.com</a>
+                <a href="mailto:support@yhathq.com" target="_blank">support@yhathq.com</a>
+                <a href="tel:6466995987">(646) 699-5987</a>
+            </nav>
+            <nav class="links col-sm-2">
+                <h4>Our Products</h4>
+                <a id="footer-products-scienceops" href="https://yhathq.com/products/scienceops">ScienceOps</a>
+                <a id="footer-products-sciencebox" href="https://yhathq.com/products/sciencebox">ScienceBox</a>
+            </nav>
+            <nav class="links col-sm-2">
+                <h4>Learn More</h4>
+                <a id="footer-about" href="https://yhathq.com/about">About</a>
+                <a id="footer-blog" href="http://blog.yhathq.com/">Blog</a>
+                <a id="footer-about-faq" href="https://yhathq.com/about/faq">FAQ</a>
+                <a id="footer-about-jobs" href="https://yhathq.com/about/jobs">Jobs</a>
+                <a id="footer-terms" href="https://yhathq.com/about/terms">Terms of Service</a>
+            </nav>
+            <nav class="social  col-sm-3">
+                <h4>Newsletter</h4>
+                <form class="form subscribe-form" role="form">
+                  <div class="form-group">
+                    <input type="email" value="" name="EMAIL" class="form-control required email" placeholder="Email Address">
+                  </div>
+                  <button class="btn blue" type="submit">Get Updates</button>
+                </form>
+            </nav>
+            <nav class="social col-sm-3">
+                <h4>Connect With Us</h4>
+                <div class="clearfix">
+                    <a id="footer-twitter" href="https://twitter.com/YhatHQ" target="_blank"><span class="icon icon-twitter"></span></a>
+                    <a id="footer-linkedin" href="http://www.linkedin.com/company/3176802" target="_blank"><span class="icon icon-linkedin"></span></a>
+                    <a id="footer-angellist" href="http://angel.co/yhat" target="_blank"><span class="icon icon-angellist"></span></a>
+                    <a id="footer-github" href="http://github.com/yhat" target="_blank"><span class="icon icon-github"></span></a>
+             </div>
+            </nav>
+        </div>
+        <p class="copy">
+            <a href="http://nytm.org/made-in-nyc" target="_blank">Made in New York City</a> <span class="divider">•</span> © 2014 ŷhat
+        </p>
+    </div>
+</footer>
+
+
+        <script src="./ŷhat   Logistic Regression in Python_files/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../static/js/lib/jquery.min.js"><\/script>')</script>
+<script type="text/javascript" src="./ŷhat   Logistic Regression in Python_files/MathJax.js"></script>
+<script src="./ŷhat   Logistic Regression in Python_files/yhat-blog.js"></script>
+
+<!-- start Google Analytics -->
+<script type="text/javascript">var _gaq = _gaq || [], pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';_gaq.push(['_require', 'inpage_linkid', pluginUrl], ['_setAccount', 'UA-37140626-1'], ['_setDomainName', 'yhathq.com'], ['_setAllowLinker', true], ['_trackPageview']);(function () {var ga = document.createElement('script');ga.type = 'text/javascript';ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga, s);})();</script><!-- end Google Analytics -->
+
+
+<!-- start Mixpanel -->
+<script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);mixpanel.init("f0b681fc37e852c74e6e42584a821fb5");</script>
+<script>
+mixpanel.track('Page Viewed', {
+    'site' : 'Blog',
+    'post' : "Logistic Regression in Python",
+    'page_name' : document.title,
+    'url' : window.location.pathname
+});
+mixpanel.track_links('#ami_link', 'clicked AMI link', {
+    'page_name' : document.title,
+    'url' : window.location.pathname
+});
+
+
+/* blog links */
+mixpanel.track_links('#button_for_info', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'bottom', 'link': 'learn more'});
+mixpanel.track_links('#newsletter', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'floating', 'link': 'newsletter'});
+mixpanel.track_links('#tweet-sidebar', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'floating', 'link': 'tweet'});
+mixpanel.track_links('#learn-more-sidebar', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'floating', 'link': 'learn more'});
+
+
+/* header links */
+mixpanel.track_links('#header-products-enterprise', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'header', 'link': 'products enterprise'});
+mixpanel.track_links('#header-products-cloud', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'header', 'link': 'products cloud'});
+mixpanel.track_links('#header-products-sciencebox', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'header', 'link': 'products sciencebox'});
+mixpanel.track_links('#header-about', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'header', 'link': 'about'});
+mixpanel.track_links('#header-about-faq', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'header', 'link': 'faq'});
+mixpanel.track_links('#header-about-jobs', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'header', 'link': 'jobs'});
+mixpanel.track_links('#header-blog', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'header', 'link': 'blog'});
+mixpanel.track_links('#header-blog-rss', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'header', 'link': 'blog rss'});
+mixpanel.track_links('#header-docs', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'header', 'link': 'docs'});
+mixpanel.track_links('#header-twitter-follow', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'header', 'link': 'blog twitter-follow'});
+
+/* footer links */
+mixpanel.track_links('#footer-products-enterprise', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'footer', 'link': 'products enterprise'});
+mixpanel.track_links('#footer-enterprise-signup', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'footer', 'link': 'enterprise signup'});
+mixpanel.track_links('#footer-products-cloud', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'footer', 'link': 'products cloud'});
+mixpanel.track_links('#footer-about', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'footer', 'link': 'about'});
+mixpanel.track_links('#footer-about-faq', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'footer', 'link': 'faq'});
+mixpanel.track_links('#footer-about-jobs', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'footer', 'link': 'jobs'});
+mixpanel.track_links('#footer-blog', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'footer', 'link': 'blog'});
+mixpanel.track_links('#footer-terms', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'footer', 'link': 'terms'});
+mixpanel.track_links('#footer-twitter', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'footer', 'link': 'twitter'});
+mixpanel.track_links('#footer-linkedin', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'footer', 'link': 'linkedin'});
+mixpanel.track_links('#footer-angelist', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'footer', 'link': 'angelist'});
+mixpanel.track_links('#footer-github', 'link clicked', {'page_name' : document.title,'url' : window.location.pathname, 'location': 'footer', 'link': 'github'});
+
+</script>
+<!-- end Mixpanel -->
+
+<!-- Start Twitter -->
+<script src="./ŷhat   Logistic Regression in Python_files/oct.js" type="text/javascript"></script>
+<script type="text/javascript">
+twttr.conversion.trackPid('l4chx');
+</script>
+<noscript>
+&lt;img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=l4chx&amp;p_id=Twitter" /&gt;
+</noscript>
+<!-- end Twitter -->
+    
+
+<iframe class="transover-tooltip" style="text-align: left; border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px; position: fixed; border-radius: 5px; z-index: 2147483647; top: -1500px; display: none; background: rgb(252, 247, 217);"></iframe><iframe class="transover-tooltip" style="text-align: left; border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px; position: fixed; border-radius: 5px; z-index: 2147483647; top: -1500px; display: none; background: rgb(252, 247, 217);"></iframe></body></html>
